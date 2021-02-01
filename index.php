@@ -16,6 +16,10 @@ while ($row = mysqli_fetch_array($result)) {
 $article = array(
     'title' => "Welcome",
     'description' => "Hello php & MySQL");
+
+
+$modify_link= '';
+$delete_link= '';
 if (isset($_GET['id'])) {
     $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql = "SELECT * FROM topic WHERE id={$_GET['id']}";
@@ -24,7 +28,11 @@ if (isset($_GET['id'])) {
     $article['title'] = htmlspecialchars($row['title']);
     $article['description'] = htmlspecialchars($row['description']);
     echo $sql;
+    $modify_link = '<a href="modify.php?id='.$_GET['id'].'">modify</a>';
+    $delete_link = '<a href="process_delete.php?id='.$_GET['id'].'">delete</a>';
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -43,6 +51,9 @@ if (isset($_GET['id'])) {
     </ol>
 
     <a href="create.php">create</a>
+    <?=$modify_link?>
+    <?=$delete_link?>
+    
 
 
     <h2><?=$article['title']?></h2>

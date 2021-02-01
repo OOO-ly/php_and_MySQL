@@ -15,10 +15,21 @@ while ($row = mysqli_fetch_array($result)) {
 }
 $article = array(
     'title' => "Welcome",
-    'description' => "Hello php & MySQL");
+    'description' => "Hello php & MySQL"
+);
+if (isset($_GET['id'])) {
+    $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $sql = "SELECT * FROM topic WHERE id={$_GET['id']}";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    $article['title'] = htmlspecialchars($row['title']);
+    $article['description'] = htmlspecialchars($row['description']);
+    echo $sql;
+
+    $modify_link = '<a href="modify.php?id='.$_GET['id'].'">modify</a>';
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +46,12 @@ $article = array(
     </ol>
 
 
-    <form action="process_create.php", method="POST">
-    
-    <p><input type="text" name="title" placeholder="Title"></p>
-    <textarea name="description" placeholder="Description"></textarea>
-    <p><input type="submit"></p>
+    <form action="process_modify.php" , method="POST">
+        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <p><input type="text" name="title" placeholder="Title" value="<?= $article['title']?>" </p>
+        <p><textarea name="description" placeholder="Description"><?= $article['description'] ?></textarea></p>
+        <p><input type="submit"></p>
     </form>
 </body>
 
 </html>
-
