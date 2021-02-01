@@ -4,6 +4,19 @@
 // $row = mysqli_fetch_assoc($res);
 // echo $row['_msg'];
 
-mysqli_connect("localhost","root","12341234",)
+$conn = mysqli_connect("localhost","root","12341234","tnj_tutorial");
+$sql = "
+INSERT INTO  topic
+(title, description, created)
+value(
+    'MySQL TEST 2',
+    'MySQL TEST 2 is...',
+    NOW()
+    )
+";
+if(!mysqli_query($conn,$sql)){
+    echo mysqli_error($conn);
+}
+
 
 ?>

@@ -11,15 +11,16 @@
     <h1>HTML</h1>
     <ol>
         <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>PHP</li>
-        
     </ol>
 
-    <a href="create.php">create</a>
-    <h2>Welcome</h2>
-    Lorem ipsum dolor sit amet consectetur
+
+
+    <form action="process_create.php", method="POST">
+    
+    <p><input type="text" name="title" placeholder="Title"></p>
+    <p><textarea name="description" placeholder="Description"></textarea></p>
+    <p><input type="submit"></p>
+    </form>
 </body>
 
 </html>
