@@ -1,3 +1,32 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
+
+$sql = "SELECT * FROM topic";
+$result = mysqli_query($conn, $sql);
+$list = '';
+
+//SQL_INJECTION을 막기 위해 mysqli_real_escape_string($sql 접속정보, $사용자 정의 정보)를 사용
+//htmlspecialchars cross site scripting 을 막기 위해 htmlspecialchars( 사용자 정의 데이터) 를 사용함
+
+while ($row = mysqli_fetch_array($result)) {
+    //<li><a href="index.php?id=5">Mysql</a></li>
+    $escaped_title = htmlspecialchars($row['title']);
+    $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{ $escaped_title}</a></li>";
+}
+$article = array(
+    'title' => "Welcome",
+    'description' => "Hello php & MySQL");
+if (isset($_GET['id'])) {
+    $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $sql = "SELECT * FROM topic WHERE id={$_GET['id']}";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    $article['title'] = htmlspecialchars($row['title']);
+    $article['description'] = htmlspecialchars($row['description']);
+    echo $sql;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +37,16 @@
 </head>
 
 <body>
-    <h1>HTML</h1>
+    <h1><a href="index.php">dynimic SQL</a></h1>
     <ol>
-        <li>HTML</li>
+        <?= $list ?>
     </ol>
-
 
 
     <form action="process_create.php", method="POST">
     
     <p><input type="text" name="title" placeholder="Title"></p>
-    <p><textarea name="description" placeholder="Description"></textarea></p>
+    <textarea name="description" placeholder="Description"></textarea>
     <p><input type="submit"></p>
     </form>
 </body>
