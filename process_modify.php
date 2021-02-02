@@ -9,7 +9,6 @@ $filtered = array(
 );
 
 
-
 $sql = "
     UPDATE topic
     SET 

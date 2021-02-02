@@ -13,10 +13,7 @@ while ($row = mysqli_fetch_array($result)) {
     $escaped_title = htmlspecialchars($row['title']);
     $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
 }
-$article = array(
-    'title' => "Welcome",
-    'description' => "Hello php & MySQL"
-);
+
 if (isset($_GET['id'])) {
     $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql = "SELECT * FROM topic WHERE id={$_GET['id']}";

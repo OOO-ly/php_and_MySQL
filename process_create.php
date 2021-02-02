@@ -1,36 +1,38 @@
 <?php
-// var_dump($_POST);
 $conn = mysqli_connect("localhost", 'root', '12341234', 'tnj_tutorial');
+
+
 
 $filtered = array(
 
     'title' => mysqli_real_escape_string($conn, $_POST['title']),
-    'description' => mysqli_real_escape_string($conn, $_POST['description'])
-
+    'description' => mysqli_real_escape_string($conn, $_POST['description']),
+    'author_id' => mysqli_real_escape_string($conn, $_POST['author_id'])
 );
+
 
 $sql = "
     INSERT INTO topic
-    (title, description, created)
+    (title, description, author_id, created)
     VALUES(
-        '{$filtered['title']}',0
+        '{$filtered['title']}',
         '{$filtered['description']}',
+        '{$filtered['author_id']}',
         NOW()
-    )
+        )
 ";
 
 $result = mysqli_query($conn, $sql);
+
 if ($result == false) {
     echo '저장하는 과정에서 문제가 생겼습니다. 관리자에게 문의해주세요';
+    echo mysqli_error($conn);
     error_log(mysqli_error($conn));
 } else {
-    // $test = mysqli_query($conn,"SELECT * from topic order by id  desc limit 1")->num_rows; 
-    
-    echo '성공했습니다. <a 
-    href="index.php?id="'
-    .$result['id'].
-    '">
+    $test = mysqli_query($conn, "SELECT * from topic order by id  desc limit 1");
+    $row = mysqli_fetch_array($test);
+    echo '성공했습니다. <a href="index.php?id='
+        . $row['id'] .
+        '">
     돌아가기</a>';
 }
-//echo $sql;
-?>
