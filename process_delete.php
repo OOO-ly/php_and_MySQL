@@ -25,7 +25,7 @@ if ($result == false){
    
 } else {
     echo '삭제했습니다. <a href="index.php">돌아가기</a>';
-
+    header("Location: index.php");
 }
 
 //echo $sql;

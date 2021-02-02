@@ -4,11 +4,8 @@ $conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
 $sql = "SELECT * from author";
 $result = mysqli_query($conn, $sql);
 
-
-
 //table 정의
 $table_row_def='';  
-
 
 
     while ($row = mysqli_fetch_array($result)
@@ -20,7 +17,7 @@ $table_row_def='';
         );
         //"if(!confirm("sure?")){return false;}
         $delete_author_bt = '
-        <form action="process_delete_author.php" method="POST" onsubmit="if(confirm(\'진짜?\')){return false;};">
+        <form action="process_delete_author.php" method="POST" onsubmit="if(!confirm(\'진짜?\')){return false;};">
         <input type="hidden" name="id" value="'.$filterd['id'].'">
         <input type="submit" value="delete">
         </form>';
@@ -57,9 +54,10 @@ if(!isset($_GET['id'])){
     <p><input type="submit"value="'.$label_submit.'"></p>
     </form>';
 }else{
-    $label_submit = 'Update_submit';
+    
     $filterd_id = mysqli_real_escape_string($conn,$_GET['id']);
-    settype($filterd_id,'integer');    
+    settype($filterd_id,'integer');
+    $label_submit = 'Update_submit';    
     $sql = "SELECT * from author where id={$filterd_id}";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result); 

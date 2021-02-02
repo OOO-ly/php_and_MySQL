@@ -9,8 +9,13 @@ $filtered = array(
     // 'description' => mysqli_real_escape_string($conn, $_POST['description'])
 );
 
+$sql = "
+    delete from topic
+    where
+        author_id = '{$filtered['id']}'
+    ";
 
-
+    $result = mysqli_query($conn, $sql);
 $sql = "
     delete from author
     where

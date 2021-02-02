@@ -63,7 +63,7 @@ if (isset($_GET['id'])) {
     //echo $sql;
     $modify_link = '<a href="modify.php?id=' . $filtered_id . '">modify</a>';
     $delete_link = //'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
-        '<form action="process_delete.php" method="POST">
+        '<form action="process_delete.php" method="POST" >
     <input type="hidden" name="id" value="' . $_GET['id'] . '">
     <input type="submit" value="delete">
     </form>';
