@@ -10,10 +10,9 @@ $filtered = array(
 );
 
 
-//테이블 별 column명이 같으면 의도와 다르게 다른 테이블의 해당 컬럼이 날아갈 수 있음 
-//sql 작성시 테이블을 잘 고려애야함
+
 $sql = "
-    delete from topic
+    delete from author
     where
         id = '{$filtered['id']}'
     ";
@@ -24,8 +23,8 @@ if ($result == false){
     error_log(mysqli_error($conn));
    
 } else {
-    echo '삭제했습니다. <a href="index.php">돌아가기</a>';
-
+    //echo '삭제했습니다. <a href="author.php">돌아가기</a>';
+    header("Location: author.php");
 }
 
 //echo $sql;

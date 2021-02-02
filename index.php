@@ -17,7 +17,7 @@ $article = array(
     'title' => "Welcome",
     'description' => "Hello php & MySQL"
 ); //,
-//'author' => ""); 없이 구현
+//'author' => ""); 없이 구현 방법은 여러가지
 
 $modify_link = '';
 $delete_link = '';
@@ -101,8 +101,7 @@ if (isset($_GET['id'])) {
 
     <h2><?= $article['title'] ?></h2>
     <p><?= $article['description'] ?></p>
-    <!-- 공란으로 정의해서 출력할 수도 있음 $article['author'] -->
-    <p><?= $author ?></p> <!-- egoing style -->
+    <p><?= $author ?></p> 
 
 
 
