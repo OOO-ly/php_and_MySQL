@@ -1,12 +1,9 @@
 <?php
-//delete 와 같이 링크로 움직이면 안되는 민감한 행동은 POST로
 
 $conn = mysqli_connect("localhost", 'root', '12341234', 'tnj_tutorial');
 //settype($_POST['id'],'integer');
 $filtered = array(
     'id' => mysqli_real_escape_string($conn, $_POST['id']),
-    // 'title' => mysqli_real_escape_string($conn, $_POST['title']),
-    // 'description' => mysqli_real_escape_string($conn, $_POST['description'])
 );
 
 $sql = "

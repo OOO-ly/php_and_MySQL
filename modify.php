@@ -5,11 +5,8 @@ $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 $list = '';
 
-//SQL_INJECTION을 막기 위해 mysqli_real_escape_string($sql 접속정보, $사용자 정의 정보)를 사용
-// cross site scripting 을 막기 위해 htmlspecialchars( 사용자 정의 데이터) 를 사용함
 
 while ($row = mysqli_fetch_array($result)) {
-    //<li><a href="index.php?id=5">Mysql</a></li>
     $escaped_title = htmlspecialchars($row['title']);
     $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
 }

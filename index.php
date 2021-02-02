@@ -1,10 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
 
-//SQL_INJECTION을 막기 위해 mysqli_real_escape_string($sql 접속정보, $사용자 정의 정보)를 사용
-//htmlspecialchars cross site scripting 을 막기 위해 htmlspecialchars( 사용자 정의 데이터) 를 사용함
-
-
 $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 $list = '';
@@ -71,9 +67,6 @@ if (isset($_GET['id'])) {
     $author = "<p>by {$article['author']}</p>";
 }
 
-// 테이블 접근시 특정 컬럼만 제외한 접근이 어렵다. (값에 의한 접근은 오히려 쉬움)
-// 그래서 하기와 같이 테이블 별, 컬럼 별 접근을 명시하는 것이 좋단다...
-// select topic.id,topic.title, topic.description, topic.created ,topic.author_id,author.name,author.profile   from topic left join author on topic.author_id = author.id;
 
 
 ?>

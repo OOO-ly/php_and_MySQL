@@ -25,6 +25,5 @@ if ($result == false) {
     echo mysqli_error($conn);
     error_log(mysqli_error($conn));
 } else {
-    //echo '성공했습니다 <a href="author.php">돌아가기</a>';
     header("Location: ./author.php");
 }

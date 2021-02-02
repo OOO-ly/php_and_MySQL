@@ -5,7 +5,6 @@ $filtered = array(
 
     'name' => mysqli_real_escape_string($conn, $_POST['name']),
     'profile' => mysqli_real_escape_string($conn, $_POST['profile']),
-    //'author_id' => mysqli_real_escape_string($conn, $_POST['author_id'])
 );
 
 
@@ -25,6 +24,5 @@ if ($result == false) {
     echo mysqli_error($conn);
     error_log(mysqli_error($conn));
 } else {
-    //echo '성공했습니다 <a href="author.php">돌아가기</a>';
     header("Location: ./author.php");
 }
