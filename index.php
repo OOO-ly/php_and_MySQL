@@ -82,6 +82,11 @@ if (isset($_GET['id'])) {
 <body>
     <h1><a href="index.php">dynimic SQL</a></h1>
     <p><a href="author.php">author</a></p>
+    
+    <?php
+    if(!isset($_SESSION['user_id']))
+    <a href="login.php">login</a>
+    
     <ol>
         <?= $list ?>
     </ol>
@@ -95,7 +100,7 @@ if (isset($_GET['id'])) {
     <h2><?= $article['title'] ?></h2>
     <p><?= $article['description'] ?></p>
     <p><?= $author ?></p> 
-
+    
 
 
 </body>
