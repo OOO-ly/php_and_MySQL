@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
+include 'mysql_conn.php';
 session_start();
 
 $sql = "SELECT * FROM topic";

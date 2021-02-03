@@ -1,6 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", 'root', '12341234', 'tnj_tutorial');
-
+include 'mysql_conn.php';
 $filtered = array(
 
     'name' => mysqli_real_escape_string($conn, $_POST['name']),

@@ -1,7 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost","root","12341234","tnj_tutorial");
-
+include 'mysql_conn.php';
 //데이터 증가로 인한 로드시 부하를 최소화 하기위해 LIMIT # 사용을 권장  
 
 // 1 row

@@ -1,6 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
-
+include 'mysql_conn.php';
 $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 $list = '';
