@@ -5,35 +5,70 @@ include 'mysql_conn.php';
 $sql = "SELECT * from author";
 $result = mysqli_query($conn, $sql);
 
-
-
-include 'submit_flag.php';
-
-
-
 //table 정의
-$table_list='';  
+$table_list = '';
 
 
-    while ($row = mysqli_fetch_array($result)
-    ) {
-        $filterd = array(
-            'id' => htmlspecialchars($row['id']),
-            'name' => htmlspecialchars($row['name']),
-            'pw' => htmlspecialchars($row['password']), // 당연히 숨겨야됨 
-            'profile' => htmlspecialchars($row['profile'])
-        );
-        //"if(!confirm("sure?")){return false;}
+while ($row = mysqli_fetch_array($result)) {
+    $filterd = array(
+        'id' => htmlspecialchars($row['id']),
+        'name' => htmlspecialchars($row['name']),
+        'pw' => htmlspecialchars($row['password']), // 당연히 숨겨야됨 
+        'profile' => htmlspecialchars($row['profile'])
+    );
+    //"if(!confirm("sure?")){return false;}
 
-        //저자 삭제 버튼 정의
-        $delete_author_bt = '
-        <form action="process_delete_author.php" method="POST" onsubmit="if(!confirm(\'진짜?\')){return false;};">
-        <input type="hidden" name="id" value="'.$filterd['id'].'">
-        <input type="submit" value="delete">
-        </form>';
-        
-        //저자 리스트 
-         $table_list .= "
+    //저자 삭제 버튼 정의
+    // $delete_author_bt = '
+    // <form action="process_delete_author.php" method="POST" onsubmit="if(!confirm(\'진짜?\')){return false;};">
+    // <input type="hidden" name="id" value="'.$filterd['id'].'">
+    // <input type="submit" value="delete">
+    // </form>';
+
+
+    // $delete_author_bt = '
+    // <form action="process_delete_author.php" method="POST">
+    // <input type="hidden" name="id" value="'.$filterd['id'].'">
+    // <input type="submit" value="delete">
+    // </form>';
+    // modal 삭제 버튼
+    $delete_author_bt = '
+        <button id="'.$filterd['id'].'">Open</button>
+        <div class="modal hidden">
+            <div class="modal_overlay"></div>
+            <div class="modal__content">
+                <h3>삭제할 아이디를 입력해주세요</h3>
+                <button> 취소 </button>
+            </div>
+        </div>
+        <script>
+        const openBt = document.getElementById("'.$filterd['id'].open'");
+        const modal = document.querySelector(".modal");
+        const overlay = modal.querySelector(".modal_overlay");
+        const closebt = modal.querySelector("button");
+
+        const openModal = () => {
+            modal.classList.remove("hidden");
+        }
+        const closeModal = () =>{
+            modal.classList.add("hidden");
+        }
+
+        overlay.addEventListener("click",closeModal);
+        closebt.addEventListener("click",closeModal);
+        openBt.addEventListener("click",openModal);
+        </script>';
+    //-----
+
+    // <h3>삭제할 아이디를 입력해주세요</h3>
+    //     <form action="process_delete_author.php" method="POST">
+    //     <input type="hidden" name="id" value="'.$filterd['id'].'">
+    //     <input type="submit" value="delete">
+    //     </form>;
+
+
+    //저자 리스트 
+    $table_list .= "
         <tr>
             <td>{$filterd['id']}</td>
             <td>{$filterd['name']}</td>
@@ -45,23 +80,23 @@ $table_list='';
             </td>
 
         </tr>";
-    }
-    //'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
- 
+}
+//'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
+
 
 $escaped = array(
-'name' => '',
-'profile' => '',
-'id' => ''
+    'name' => '',
+    'profile' => '',
+    'id' => ''
 );
 
-$form_author ='';
+$form_author = '';
 $label_submit = 'Create_author';
 //id 가 있으면 create 없으면 수정
 //update가 db다시 접근하면서 느려짐...
-if(!isset($_GET['id'])){
+if (!isset($_GET['id'])) {
     //저자 생성 폼
-    $form_author= '
+    $form_author = '
     <form action="process_create_author.php" method="post"';
     //$form_author .=submit_flag();
     $form_author .= '>
@@ -70,29 +105,28 @@ if(!isset($_GET['id'])){
     <p><label for="input_id">비밀번호</label>
     <input type="password" name="password" id="input_pw"></p>
     <p><textarea name="profile"  cols="30" rows="10" placeholder="Profile"></textarea></p>
-    <p><input type="submit"value="'.$label_submit.'"></p>
+    <p><input type="submit"value="' . $label_submit . '"></p>
     </form>';
-}else{
-    
-    $filterd_id = mysqli_real_escape_string($conn,$_GET['id']);
-    settype($filterd_id,'integer');
-    $label_submit = 'Update_submit';    
+} else {
+
+    $filterd_id = mysqli_real_escape_string($conn, $_GET['id']);
+    settype($filterd_id, 'integer');
+    $label_submit = 'Update_submit';
     $sql = "SELECT * from author where id={$filterd_id}";
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result); 
+    $row = mysqli_fetch_array($result);
     $escaped = array(
         'name' => htmlspecialchars($row['name']),
         'profile' => htmlspecialchars($row['profile']),
         'id' => htmlspecialchars($row['id'])
     );
-    $form_author ='
+    $form_author = '
     <form action="process_update_author.php" method="post" onsubmit="<?php submit_flag() ?>">
-    <input type="hidden" name="id" value="'.$escaped['id'].'">
-    <p><input type="text" name="name" value="'.$escaped['name'].'"></p>
-    <p><textarea name="profile" cols="30" rows="10" placeholder="Profile">'.$escaped['profile'].'</textarea></p>
-    <p><input type="submit"value="'.$label_submit.'"></p>
+    <input type="hidden" name="id" value="' . $escaped['id'] . '">
+    <p><input type="text" name="name" value="' . $escaped['name'] . '"></p>
+    <p><textarea name="profile" cols="30" rows="10" placeholder="Profile">' . $escaped['profile'] . '</textarea></p>
+    <p><input type="submit"value="' . $label_submit . '"></p>
     </form>';
-
 }
 
 ?>
@@ -101,16 +135,58 @@ if(!isset($_GET['id'])){
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>회원가입</title>
+
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal_overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .modal__content {
+            background-color: salmon;
+            padding: 50px 100px;
+            text-align: center;
+            position: relative;
+            top: 0px;
+            width: 20%;
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            border-radius: 10px;
+
+
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <h1><a href="author.php">test</a></h1>
     <p><a href="index.php">게시판</a></p>
-
     <table border="1">
-    
+
         <tr>
             <td>id
             </td>
@@ -126,14 +202,24 @@ if(!isset($_GET['id'])){
             <td>
             </td>
         </tr>
-    <?= $table_list ?>
+        <?= $table_list ?>
 
     </table>
 
+   
+    <button id="open">Open</button>
+    <div class="modal hidden">
+        <div class="modal_overlay"></div>
+        <div class="modal__content">
+            <h3>삭제할 아이디를 입력해주세요</h3>
+            <button> 취소 </button>
+        </div>
+    </div>
+    
 
 
-    <?=$form_author ?>
-    <?=$delete_author_bt?>
+    <?= $form_author ?>
+
 </body>
 
 </html>
