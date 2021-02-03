@@ -1,5 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
+session_start();
 
 $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
@@ -57,12 +58,15 @@ if (isset($_GET['id'])) {
     //-------------
 
     //echo $sql;
+    if($row['name'] == $_SESSION['user_id'] ){
     $modify_link = '<a href="modify.php?id=' . $filtered_id . '">modify</a>';
+    
     $delete_link = //'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
         '<form action="process_delete.php" method="POST" >
     <input type="hidden" name="id" value="' . $_GET['id'] . '">
     <input type="submit" value="delete">
     </form>';
+    }
     //egoing style 저자 출력
     $author = "<p>by {$article['author']}</p>";
 }
@@ -80,12 +84,19 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <h1><a href="index.php">dynimic SQL</a></h1>
-    <p><a href="author.php">author</a></p>
+    <h1><a href="index.php">test</a></h1>
+    <p><a href="author.php">회원 정보 및 회원 가입</a></p>
     
     <?php
-    if(!isset($_SESSION['user_id']))
-    <a href="login.php">login</a>
+    
+    if(!isset($_SESSION['user_id'])){
+        echo '<a href="login.php">login</a>';
+    }
+    else{
+        echo $_SESSION['user_id'].'님 안녕하세요 :) <a href="logout.php">로그아웃</a>';
+    }
+    ?>
+    
     
     <ol>
         <?= $list ?>

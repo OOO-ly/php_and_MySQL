@@ -1,13 +1,14 @@
 <?php
-$conn = mysqli_connect("localhost", 'root', '12341234', 'tnj_tutorial');
 
+$conn = mysqli_connect("localhost", 'root', '12341234', 'tnj_tutorial');
 
 
 $filtered = array(
 
     'title' => mysqli_real_escape_string($conn, $_POST['title']),
     'description' => mysqli_real_escape_string($conn, $_POST['description']),
-    'author_id' => mysqli_real_escape_string($conn, $_POST['author_id'])
+    //'author_id' => mysqli_real_escape_string($conn, $_POST['author_id']),//legacy
+    'user_id' => mysqli_real_escape_string($conn, $_POST['user_id'])
 );
 
 
@@ -17,7 +18,7 @@ $sql = "
     VALUES(
         '{$filtered['title']}',
         '{$filtered['description']}',
-        '{$filtered['author_id']}',
+        '{$filtered['user_id']}',
         NOW()
         )
 ";
