@@ -31,13 +31,13 @@ while ($row = mysqli_fetch_array($result)) {
     // <input type="hidden" name="id" value="'.$filterd['id'].'">
     // <input type="submit" value="delete">
     // </form>';
-    
-    
-    
+
+
+
     // delete modal 
     // 스타일과 기능을 반복 ( 클래스는 상수로 )
 
-   
+
     $delete_author_bt = '
     <style type="text/css">
 .modal' . $filterd['id'] . '{
@@ -81,16 +81,15 @@ h3{
             <div class="modal_overlay' . $filterd['id'] . '"></div>
             <div class="modal__content' . $filterd['id'] . '">
                 <h3>삭제할 아이디를 입력해주세요</h3>
-                <form action="process_delete_author.php" method="POST">
-                <input type="hidden" name="id" value="' . $filterd['id'] . '">
-                <p><label for="delete_id_input">아이디</label>
-                <input type="text" id="delete_id_input" name="name"></p>
-                <p><label for="delete_pw_input">비밀번호</label>
-                <input type="password" id="delete_pw_input" name="password"></p>
-                <input type="submit" value="저자 삭제">
-                </form>
+                    <form action="process_delete_author.php" method="POST">
+                        <input type="hidden" name="id" value="' . $filterd['id'] . '">
+                        <p><label for="delete_id_input">아이디</label>
+                        <input type="text" id="delete_id_input" name="name"></p>
+                        <p><label for="delete_pw_input">비밀번호</label>
+                        <input type="password" id="delete_pw_input" name="password"></p>
+                        <input type="submit" value="저자 삭제">
+                    </form>
                 <button> 취소 </button>
-               
             </div>
         </div>
         <script>
@@ -157,7 +156,7 @@ if (!isset($_GET['id'])) {
     <p><label for="input_id">비밀번호</label>
     <input type="password" name="password" id="input_pw"></p>
     <p><textarea name="profile"  cols="30" rows="10" placeholder="Profile"></textarea></p>
-    <p><input type="submit"value="' . $label_submit . '"></p>
+    <p><input type="submit" id="oncecreate_test" value="' . $label_submit . '" onclick="insert();"></p>
     </form>';
 } else {
 
@@ -190,14 +189,12 @@ if (!isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>회원가입</title>
-
-
-
+    <script src="./doublesubmitcheck.js"></script>
 
 </head>
 
 <body>
-    <h1><a href="author.php">test</a></h1>
+    <h1><a href="author.php">회원가입</a></h1>
     <p><a href="index.php">게시판</a></p>
     <table border="1">
 

@@ -17,9 +17,12 @@ $sql = "
        password = '{$filtered['password']}'
 ";
 
+
+var_dump($filtered);
 $account_result = mysqli_query($conn, $sql);
 
-if(!mysqli_num_rows($account_result) ){
+
+if(mysqli_num_rows($account_result) ){
         $sql = "
         delete from topic
         where
