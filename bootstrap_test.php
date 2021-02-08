@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -63,7 +63,7 @@ h3{
     display: none;
 }
 </style>
-
+<!-- 
 <script>
         let author = {
             id: NULL,
@@ -90,39 +90,39 @@ h3{
            
 
         };
-        let author_1 = new author('1');
+        let author_1 = new author('1'); -->
         
        
-        <script>
-        let author = {
-            id: NULL,
+    //     <script>
+    //     let author = {
+    //         id: NULL,
             
-            openBt: document.getElementById("delete"+this.id),
-            modal : document.querySelector(".modal"+this.id),
-            overlay : modal.querySelector(".modal_overlay"+this.id),
-            closebt : modal.querySelector("button"),
+    //         openBt: document.getElementById("delete"+this.id),
+    //         modal : document.querySelector(".modal"+this.id),
+    //         overlay : modal.querySelector(".modal_overlay"+this.id),
+    //         closebt : modal.querySelector("button"),
             
-            author : (author_id) => {
-                this.id = author_id;
-                openBt = document.getElementById("delete"+this.id);
-                modal  = document.querySelector(".modal"+this.id);
-                overlay = modal+this.id.querySelector(".modal_overlay"+this.id);
-                closebt = modal+this.id.querySelector("button");
-            },
-            openModal : () => {
-                modal+this.id.classList.remove("hidden"+this.id);
-            },
-            closeModal : () => {
-                modal+this.id.classList.add("hidden"+this.id);
-            },
+    //         author : (author_id) => {
+    //             this.id = author_id;
+    //             openBt = document.getElementById("delete"+this.id);
+    //             modal  = document.querySelector(".modal"+this.id);
+    //             overlay = modal+this.id.querySelector(".modal_overlay"+this.id);
+    //             closebt = modal+this.id.querySelector("button");
+    //         },
+    //         openModal : () => {
+    //             modal+this.id.classList.remove("hidden"+this.id);
+    //         },
+    //         closeModal : () => {
+    //             modal+this.id.classList.add("hidden"+this.id);
+    //         },
             
-            overlay:addEventListener("click",closeModal),
-            closebt:addEventListener("click",closeModal),
-            openBt:addEventListener("click",openModal),
+    //         overlay:addEventListener("click",closeModal),
+    //         closebt:addEventListener("click",closeModal),
+    //         openBt:addEventListener("click",openModal),
 
-        };
-        author(1);
-    </script>
+    //     };
+    //     author(1);
+    // </script>
 
             
     // </script>
@@ -158,4 +158,4 @@ h3{
 
 </body>
 
-</html>
+</html> -->
