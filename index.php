@@ -102,7 +102,12 @@ if (isset($_GET['id'])) {
         <?= $list ?>
     </ol>
 
-    <a href="create.php">create</a>
+    <?php
+    if(isset($_SESSION['user_id'])){
+        echo '  <a href="create.php">create</a>';
+    }
+    ?>
+
     <?= $modify_link ?>
     <?= $delete_link ?>
 

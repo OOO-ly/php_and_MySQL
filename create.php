@@ -1,7 +1,15 @@
 <?php
 include 'mysql_conn.php';
 session_start();
-$escaped_userid = htmlspecialchars($_SESSION['user_id']);
+if(isset($_SESSION['user_id'])){
+    $escaped_userid = htmlspecialchars($_SESSION['user_id']);
+
+    $sql = " 
+select id from author
+where name  = '{$escaped_userid}'
+";
+}
+
 
 //글목록 업로드 
 $sql = "SELECT * FROM topic";
@@ -14,10 +22,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 //---------
 //로그인 한 저자 전송
-$sql = " 
-select id from author
-where name  = '{$escaped_userid}'
-";
+
 
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);

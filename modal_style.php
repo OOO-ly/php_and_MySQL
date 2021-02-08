@@ -1,3 +1,13 @@
+<?php
+
+
+
+
+?>
+
+
+
+<style type="text/css">
 .modal {
     position: fixed;
     top: 0;
@@ -33,3 +43,4 @@ h3{
 .hidden{
     display: none;
 }
+</style>

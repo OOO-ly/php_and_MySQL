@@ -31,32 +31,84 @@ while ($row = mysqli_fetch_array($result)) {
     // <input type="hidden" name="id" value="'.$filterd['id'].'">
     // <input type="submit" value="delete">
     // </form>';
-    // modal 삭제 버튼
+    
+    
+    
+    // delete modal 
+    // 스타일과 기능을 반복 ( 클래스는 상수로 )
+
+   
     $delete_author_bt = '
-        <button id="'.$filterd['id'].'">Open</button>
-        <div class="modal hidden">
-            <div class="modal_overlay"></div>
-            <div class="modal__content">
+    <style type="text/css">
+.modal' . $filterd['id'] . '{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal_overlay' . $filterd['id'] . '{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.modal__content' . $filterd['id'] . '{
+    background-color: salmon;
+    padding: 50px 100px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    width: 20%;
+    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),0 6px 6px  rgba(0, 0, 0, 0.23);
+    border-radius: 10px;   
+
+
+}
+h3{
+    margin: 0;
+}
+.hidden' . $filterd['id'] . '{
+    display: none;
+}
+</style>
+        <button id="delete' . $filterd['id'] . '">delete</button>
+        <div class="modal' . $filterd['id'] . ' hidden' . $filterd['id'] . '">
+            <div class="modal_overlay' . $filterd['id'] . '"></div>
+            <div class="modal__content' . $filterd['id'] . '">
                 <h3>삭제할 아이디를 입력해주세요</h3>
+                <form action="process_delete_author.php" method="POST">
+                <input type="hidden" name="id" value="' . $filterd['id'] . '">
+                <p><label for="delete_id_input">아이디</label>
+                <input type="text" id="delete_id_input" name="name"></p>
+                <p><label for="delete_pw_input">비밀번호</label>
+                <input type="password" id="delete_pw_input" name="password"></p>
+                <input type="submit" value="저자 삭제">
+                </form>
                 <button> 취소 </button>
+               
             </div>
         </div>
         <script>
-        const openBt = document.getElementById("'.$filterd['id'].open'");
-        const modal = document.querySelector(".modal");
-        const overlay = modal.querySelector(".modal_overlay");
-        const closebt = modal.querySelector("button");
+        const openBt' . $filterd['id'] . ' = document.getElementById("delete' . $filterd['id'] . '");
+        const modal' . $filterd['id'] . ' = document.querySelector(".modal' . $filterd['id'] . '");
+        const overlay' . $filterd['id'] . ' = modal' . $filterd['id'] . '.querySelector(".modal_overlay' . $filterd['id'] . '");
+        const closebt' . $filterd['id'] . ' = modal' . $filterd['id'] . '.querySelector("button");
 
-        const openModal = () => {
-            modal.classList.remove("hidden");
+        const openModal' . $filterd['id'] . '= () => {
+            modal' . $filterd['id'] . '.classList.remove("hidden' . $filterd['id'] . '");
         }
-        const closeModal = () =>{
-            modal.classList.add("hidden");
+        const closeModal' . $filterd['id'] . '= () =>{
+            modal' . $filterd['id'] . '.classList.add("hidden' . $filterd['id'] . '");
         }
 
-        overlay.addEventListener("click",closeModal);
-        closebt.addEventListener("click",closeModal);
-        openBt.addEventListener("click",openModal);
+        overlay' . $filterd['id'] . '.addEventListener("click",closeModal' . $filterd['id'] . ');
+        closebt' . $filterd['id'] . '.addEventListener("click",closeModal' . $filterd['id'] . ');
+        openBt' . $filterd['id'] . '.addEventListener("click",openModal' . $filterd['id'] . ');
         </script>';
     //-----
 
@@ -136,50 +188,12 @@ if (!isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+
     <title>회원가입</title>
 
-    <style>
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal_overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-
-        .modal__content {
-            background-color: salmon;
-            padding: 50px 100px;
-            text-align: center;
-            position: relative;
-            top: 0px;
-            width: 20%;
-
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-            border-radius: 10px;
 
 
-        }
 
-        h3 {
-            margin: 0;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -206,16 +220,8 @@ if (!isset($_GET['id'])) {
 
     </table>
 
-   
-    <button id="open">Open</button>
-    <div class="modal hidden">
-        <div class="modal_overlay"></div>
-        <div class="modal__content">
-            <h3>삭제할 아이디를 입력해주세요</h3>
-            <button> 취소 </button>
-        </div>
-    </div>
-    
+
+
 
 
     <?= $form_author ?>
