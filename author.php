@@ -76,23 +76,30 @@ h3{
     display: none;
 }
 </style>
+
+
         <button id="delete' . $filterd['id'] . '">delete</button>
         <div class="modal' . $filterd['id'] . ' hidden' . $filterd['id'] . '">
             <div class="modal_overlay' . $filterd['id'] . '"></div>
             <div class="modal__content' . $filterd['id'] . '">
                 <h3>삭제할 아이디를 입력해주세요</h3>
-                    <form action="process_delete_author.php" method="POST">
+                    <form id="detete_form" action="process_delete_author.php" method="POST">
                         <input type="hidden" name="id" value="' . $filterd['id'] . '">
                         <p><label for="delete_id_input">아이디</label>
                         <input type="text" id="delete_id_input" name="name"></p>
                         <p><label for="delete_pw_input">비밀번호</label>
                         <input type="password" id="delete_pw_input" name="password"></p>
-                        <input type="submit" value="저자 삭제">
+                        <input type="submit"  value="저자 삭제" onclick="doublecheck();">
                     </form>
                 <button> 취소 </button>
             </div>
         </div>
+
         <script>
+        
+
+        
+        
         const openBt' . $filterd['id'] . ' = document.getElementById("delete' . $filterd['id'] . '");
         const modal' . $filterd['id'] . ' = document.querySelector(".modal' . $filterd['id'] . '");
         const overlay' . $filterd['id'] . ' = modal' . $filterd['id'] . '.querySelector(".modal_overlay' . $filterd['id'] . '");
@@ -108,6 +115,8 @@ h3{
         overlay' . $filterd['id'] . '.addEventListener("click",closeModal' . $filterd['id'] . ');
         closebt' . $filterd['id'] . '.addEventListener("click",closeModal' . $filterd['id'] . ');
         openBt' . $filterd['id'] . '.addEventListener("click",openModal' . $filterd['id'] . ');
+
+        
         </script>';
     //-----
 
@@ -216,6 +225,7 @@ if (!isset($_GET['id'])) {
         <?= $table_list ?>
 
     </table>
+    
 
 
 

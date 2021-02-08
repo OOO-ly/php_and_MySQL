@@ -122,6 +122,7 @@ if (isset($_GET['id'])) {
     <hr>
     <table border="2">
 
+    회원게시판
     <tr>
         <td>글번호
         </td>
@@ -135,6 +136,22 @@ if (isset($_GET['id'])) {
     <?= $list ?>
 
     </table>
+    <table border="2">
+    
+    자유게시판
+    <tr>
+        <td>글번호
+        </td>
+        <td>글 제목
+        </td>
+        <!-- 비밀번호 삭제 요망 -->
+        <td>작성자
+        </td>
+        <td>작성일
+    </tr>
+    <?= $list ?>
+
+</table>
 
 
 
