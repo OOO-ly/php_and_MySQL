@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+.hi{
+    font-size: 120px;
+}
+
 .nav-container{
     display: flex;
 /* //    flex-direction: row; */
@@ -12,22 +16,31 @@ body {
     list-style-type: none;
 }
 
+
 .nav_item{
     padding: 15px;
 }
 
-.nav_item h2 {
-    background-color: tomato;
+.nav_item{
+    padding: 20px;
 }
 
-.nav-item h2 {
+.nav_item a{
     text-align: center;
     text-decoration: none;
-    color: white;
-    background-color: tomato;
+    color: chartreuse;
+}
+.nav_item:nth-child(1){
+    background-color: chocolate;
+}
+.nav_item:hover{
+    background-color: cornflowerblue;
+    background-position: center;
+    background: url(../media/profile.png) no-repeat;
 }
 
-.nav-item h2 {
-    
-    background-color: tomato;
+.index_asd{
+
+    background: url(../media/profile.png) no-repeat;
+
 }

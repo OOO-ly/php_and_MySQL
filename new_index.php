@@ -17,14 +17,14 @@ $title = "tnj_tutorial"
 </head>
 
 <body>
-
+    
     <nav>
         <ul class="nav-container">
-            <li class="nav_item"><a href="./home.php">home</a></li>
+            <li class="index_asd"><a href="">home</a></li>
+            <li class="nav_item index_"><a href="./home.php">home</a></li>
             <li class="nav_item"><a href="./produce.php">회사소개</a></li>
             <li class="nav_item"><a href="./comunity.php">커뮤니티</a></li>
             <li class="nav_item"><a href="./contactus.php">고객지원</a></li>
-            <h2>hrml</h2>
         </ul>
     </nav>
 
