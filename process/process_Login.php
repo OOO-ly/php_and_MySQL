@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'mysql_conn.php';
+include '../data/mysql_conn.php';
 
 $_SESSION['user_id'] = $_POST['user_id'];
 $_SESSION['user_pw'] = $_POST['user_pw'];
@@ -24,7 +24,7 @@ while($row = mysqli_fetch_array($result))
     if($row['name'] == $filtered['user_id'] && 
        $row['password'] == $filtered['user_pw'])
     {
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }
 }

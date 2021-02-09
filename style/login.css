@@ -1,0 +1,44 @@
+.top_nav {
+
+  background-color: grey;
+  overflow: hidden;
+}
+.top_nav_content {
+  float: right;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top_nav_content h2 {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  /* /* font-size: 1rem; */
+  overflow: hidden;
+}
+.top_nav_content > .login_ {
+  color: #f2f2f2;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+  position: relative; 
+  top: 50%;
+  overflow: hidden;
+  padding: 0px 0px 0px 0em;
+  margin: 2pt;
+}
+
+.top_nav_content > .login_ > .login_content h3 {
+  float: left;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0px 5px;
+  margin: 1pt;
+  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: honeydew;
+} 

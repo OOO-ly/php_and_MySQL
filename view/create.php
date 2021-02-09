@@ -1,5 +1,5 @@
 <?php
-include 'mysql_conn.php';
+include '../data/mysql_conn.php';
 session_start();
 if(isset($_SESSION['user_id'])){
     $escaped_userid = htmlspecialchars($_SESSION['user_id']);
@@ -48,15 +48,15 @@ $row = mysqli_fetch_array($result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>글쓰기 </title>
 </head>
 
 <body>
-    <h1><a href="index.php">dynimic SQL</a></h1>
+    <h1><a href="../index.php">글 생성 </a></h1>
     <ol>
         <?= $list ?>
     </ol>
-    <form action="process_create.php" , method="POST">
+    <form action="../process/process_create.php" , method="POST">
         <input type="hidden" name="user_id" value="<?=$row['id']?>">
         
         <p><input type="text" name="title" placeholder="Title"></p>

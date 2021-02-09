@@ -1,5 +1,5 @@
 <?php
-include 'mysql_conn.php';
+include '../data/mysql_conn.php';
 //settype($_POST['id'],'integer');
 $filtered = array(
     'id' => mysqli_real_escape_string($conn, $_POST['id']),

@@ -1,5 +1,5 @@
 <?php
-include 'mysql_conn.php';
+include '../data/mysql_conn.php';
 $filtered = array(
 
     'name' => mysqli_real_escape_string($conn, $_POST['name']),

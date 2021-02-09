@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+.nav-container{
+    display: flex;
+/* //    flex-direction: row; */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: blanchedalmond;
+    list-style-type: none;
+}
+
+.nav_item{
+    padding: 15px;
+}
+
+.nav_item h2 {
+    background-color: tomato;
+}
+
+.nav-item h2 {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: tomato;
+}
+
+.nav-item h2 {
+    
+    background-color: tomato;
+}

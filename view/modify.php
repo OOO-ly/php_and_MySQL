@@ -1,5 +1,5 @@
 <?php
-include 'mysql_conn.php';
+include '../data/mysql_conn.php';
 $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 $list = '';
