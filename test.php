@@ -146,21 +146,21 @@
 </head>
 
 <body>
-    <ul id="menu">
-        <li><a href="#">Home</a></li>
-        <li>
-            <a href="#">Categories</a>
-            <ul>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">Graphic design</a></li>
-                <li><a href="#">Development tools</a></li>
-                <li><a href="#">Web design</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Work</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
+
+<?php
+
+
+function hi($a, $b)
+{
+    $string = "SELECT {$b}.id ";
+
+    echo $string;
+}
+
+
+hi("1","author");
+
+?>
 
 </body>
 

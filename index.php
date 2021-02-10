@@ -6,75 +6,45 @@
     $board_count_sql = "select count(*) FROM topic2";
 
 
-    //author , topic 의 id column 명 중복으로 author id를 제외한 column load 
-    $sql = "SELECT 
-                topic.id, topic.title, 
-                topic.description, 
-                topic.created,
-                topic.author_id,
-                author.name,
-                author.profile 
-            FROM topic        
-            LEFT JOIN author
-            ON topic.author_id = author.id
-            ORDER BY created DESC
-            LIMIT 5";
-
-    $result = mysqli_query($conn, $sql);
-    $list = '';
-
-    // 회원 게시판 목록 불러오기 
-    while ($row = mysqli_fetch_array($result)) {
-        
-        $escaped_title = htmlspecialchars($row['title']);
-
-        // list 방식
-        //$list .=  "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
-
-        // 테이블 방식
-        $list .= "
-            <tr>
-                <td>{$row['id']}</td>
-                <td><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></td>
-                <td>{$row['name']}</td>
-                <td>{$row['created']}</td>
-            </tr>";
-    }
-
     //자유 게시판 목록 불러오기
 
+function new_topic_write($conn, $topic_name){
+  
     $sql = "SELECT 
-                topic2.id, topic2.title, 
-                topic2.description, 
-                topic2.created,
-                topic2.author_id,
+                {$topic_name}.id, {$topic_name}.title, 
+                {$topic_name}.description, 
+                {$topic_name}.created,
+                {$topic_name}.author_id,
                 author.name,
                 author.profile 
-            FROM topic2        
+            FROM {$topic_name}        
             LEFT JOIN author
-            ON topic2.author_id = author.id
+            ON {$topic_name}.author_id = author.id
             ORDER BY created DESC
             LIMIT 5";
 
- $result = mysqli_query($conn, $sql);
- 
-    $topic2_list = '';
+        $result = mysqli_query($conn, $sql);
+
+        $topic_list = '';
 
 
-// var_dump($result);
-    while ($row = mysqli_fetch_array($result)) {
-        
+        // var_dump($result);
+        while ($row = mysqli_fetch_array($result)) {
+
         $escaped_title = htmlspecialchars($row['title']);
-   
 
-        $topic2_list .= "
+
+        $topic_list .= "
             <tr>
                 <td>{$row['id']}</td>
                 <td><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></td>
                 <td>{$row['name']}</td>
                 <td>{$row['created']}</td>
             </tr>";
+        }
     }
+
+
 
 
 

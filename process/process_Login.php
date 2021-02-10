@@ -24,14 +24,14 @@ while($row = mysqli_fetch_array($result))
     if($row['name'] == $filtered['user_id'] && 
        $row['password'] == $filtered['user_pw'])
     {
-        header("Location: ../index.php");
+        header("Location: ../new_index.php");
         die();
     }
 }
 if(($filtered['user_id'] == '' ))
 {
     session_destroy();
-    echo "아이디를 입력해주세요 <a href=\"index.php\">돌아가기</a>";
+    echo "아이디를 입력해주세요 <a href=\"new_index.php\">돌아가기</a>";
 }
 else
 {
