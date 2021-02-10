@@ -12,7 +12,7 @@ where name  = '{$escaped_userid}'
 
 
 //글목록 업로드 
-$sql = "SELECT * FROM topic";
+$sql = "SELECT * FROM topic2";
 $result = mysqli_query($conn, $sql);
 $list = '';
 

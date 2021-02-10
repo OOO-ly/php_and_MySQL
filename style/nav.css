@@ -11,15 +11,6 @@
   
 }
 
-.juna{
-    font-family:sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 600px;
-}
-
 
 
 .nav-container{
@@ -45,7 +36,7 @@
     
     backdrop-filter: blur(5px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
     z-index: 10;
     
 }
@@ -120,6 +111,8 @@
    
 }
 
-
+.clear:after{
+color: black;
+}
 
 

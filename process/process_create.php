@@ -12,9 +12,9 @@ $filtered = array(
 
 
 $sql = "
-    INSERT INTO topic
+    INSERT INTO topic2
     (title, description, author_id, created)
-    VALUES(
+    VALUES( 
         '{$filtered['title']}',
         '{$filtered['description']}',
         '{$filtered['user_id']}',
@@ -31,7 +31,7 @@ if ($result == false) {
 } else {
     $test = mysqli_query($conn, "SELECT * from topic order by id  desc limit 1");
     $row = mysqli_fetch_array($test);
-    echo '성공했습니다. <a href="index.php?id='
+    echo '성공했습니다. <a href="../index.php?id='
         . $row['id'] .
         '">
     돌아가기</a>';
