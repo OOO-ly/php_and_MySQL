@@ -217,8 +217,6 @@ function new_topic_write($conn, $topic_name){
 Copyright © 2021 ### rights reserved. 
 
 
-<h2>please workign</h2>
-<h3>we didit!!!!!!!</h3>
 </footer>
 
 

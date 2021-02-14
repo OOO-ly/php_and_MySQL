@@ -15,7 +15,10 @@ ON topic.author_id = author.id
 ORDER BY created DESC
 LIMIT 5";
 
-$result = mysqli_query($conn, $sql);
+$result= mysqli_query($conn, $sql);
+
+// die(var_dump($result = mysqli_query($conn, $sql)));
+//$result = mysqli_query($conn, $sql);
 $list = '';
 
 ?>
@@ -30,6 +33,9 @@ $list = '';
         <td>작성일
     </tr>
 <?php
+
+
+
 while ($row = mysqli_fetch_array($result)) {
 
     $escaped_title = htmlspecialchars($row['title']);

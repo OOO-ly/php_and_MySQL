@@ -14,7 +14,7 @@
 
     <nav>
         <ul class="nav-container">
-            <a class="nav-logo" href="./new_index.php">
+            <a class="nav-logo" href="../new_index.php">
                 <img src="../media/profile.png" alt="nav_logo">
             </a>
             <li class="nav_item"><a href="../produce.php" class="produce_">회사소개</a></li>
