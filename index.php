@@ -199,7 +199,7 @@ function new_topic_write($conn, $topic_name){
     <h2><?= $article['title'] ?></h2>
     <p><?= $article['description'] ?></p>
     <p><?= $author ?></p>
-    <hr>
+    <hr>gi`
     <p>
 
     <?php
@@ -210,10 +210,15 @@ function new_topic_write($conn, $topic_name){
     ?>
 
 
+
+
 <footer>
 
 Copyright © 2021 ### rights reserved. 
 
+
+<h2>please workign</h2>
+<h3>we didit!!!!!!!</h3>
 </footer>
 
 
