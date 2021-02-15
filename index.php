@@ -1,127 +1,13 @@
 <?php
-    include './data/mysql_conn.php';
-    session_start();
-    //필드 수 초과한 id 접근 방지 용 filed count
-    $topic_count_sql =  "select count(*) FROM topic";
-    $board_count_sql = "select count(*) FROM topic2";
-
-
-    //자유 게시판 목록 불러오기
-
-function new_topic_write($conn, $topic_name){
-  
-    $sql = "SELECT 
-                {$topic_name}.id, {$topic_name}.title, 
-                {$topic_name}.description, 
-                {$topic_name}.created,
-                {$topic_name}.author_id,
-                author.name,
-                author.profile 
-            FROM {$topic_name}        
-            LEFT JOIN author
-            ON {$topic_name}.author_id = author.id
-            ORDER BY created DESC
-            LIMIT 5";
-
-        $result = mysqli_query($conn, $sql);
-
-        $topic_list = '';
-
-
-        // var_dump($result);
-        while ($row = mysqli_fetch_array($result)) {
-
-        $escaped_title = htmlspecialchars($row['title']);
-
-
-        $topic_list .= "
-            <tr>
-                <td>{$row['id']}</td>
-                <td><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></td>
-                <td>{$row['name']}</td>
-                <td>{$row['created']}</td>
-            </tr>";
-        }
-    }
+session_start();
+include "./data/mysql_conn.php";
+include "./new_article_preview.php"; 
 
 
 
+$title = "뛰놀자 튜토리얼";
 
-
-
-
-    // default article 
-    $article = array(
-        'title' => "Welcome",
-        'description' => "Hello php & MySQL"
-    );
-
-    //default variable : modify , delete, author 
-    $modify_link = '';
-    $delete_link = '';
-    $author = '';
-
-
-    // 게시글을 열었다면 id 를 받아 
-    if (isset($_GET['id']) 
-        
-        //&& $_GET['id'] <= mysqli_fetch_array(mysqli_query($conn, $topic_count_sql))['count(*)']
-        ) 
-        {
-        
-    
-        $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
-    
-        $sql = "select 
-                    topic.id, topic.title, 
-                    topic.description, 
-                    topic.created,
-                    topic.author_id,
-                    author.name,
-                    author.profile 
-                from topic 
-                left join author 
-                on topic.author_id = author.id
-                WHERE topic.id={$filtered_id}
-                ";
-
-
-        $result = mysqli_query($conn, $sql);
-
-
-        $row = mysqli_fetch_array($result);
-
-
-        //본문 내용
-        //-------------
-        $article['title'] = htmlspecialchars($row['title']);
-        $article['description'] = htmlspecialchars($row['description']);
-        //여기서 저자 앞에 문자열 수정 중 
-        //$article['author'] = htmlspecialchars("by ".$row['name']);
-
-        // egoing style
-        $article['author'] = htmlspecialchars($row['name']);
-        //-------------
-
-        //
-        if (isset($_SESSION['user_id']) && $row['name'] == $_SESSION['user_id']) {
-            $modify_link = '<a href="modify.php?id=' . $filtered_id . '">modify</a>';
-
-            $delete_link = //'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
-                '<form action="process_delete.php" method="POST" >
-                <input type="hidden" name="id" value="' . $_GET['id'] . '">
-                <input type="submit" value="delete">
-                </form>';
-            }
-        //egoing style 저자 출력
-        $author = "<p>by {$article['author']}</p>";
-    }
-    // else
-    // {
-    //     echo '해당 게시글은 존재하지 않습니다.';
-    // }
-
-
+// $_SESSION['user_id'] ='hello';
 
 ?>
 <!DOCTYPE html>
@@ -129,98 +15,52 @@ function new_topic_write($conn, $topic_name){
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title><?= $title ?></title>
+    <link rel="stylesheet" href="../style/nav.css">
+    
 </head>
 
 <body>
-    <h1><a href="index.php">Index</a></h1>
-    
-    
-
-    <?php
-
-    if (!isset($_SESSION['user_id'])) {?>
-        <p><a href="./view/author.php">회원 정보 및 회원 가입</a></p>
-        <a href="./view/login.php">login</a>
-        
-    <?php
-    } else {?>
-        <p><?=$_SESSION['user_id']?> 님 안녕하세요 :)</p>
-         <p><a href="./view/logout.php">로그아웃</a></p>
-    <?php } ?>
-    <hr>
-    <table border="2">
-
-        회원게시판
-        <tr>
-            <td>글번호
-            </td>
-            <td>글 제목
-            </td>
-            <!-- 비밀번호 삭제 요망 -->
-            <td>작성자
-            </td>
-            <td>작성일
-        </tr>
-        <?= $list ?>
-
-    </table>
-    <table border="2">
-
-        자유게시판
-        <tr>
-            <td>글번호
-            </td>
-            <td>글 제목
-            </td>
-            <!-- 비밀번호 삭제 요망 -->
-            <td>작성자
-            </td>
-            <td>작성일
-        </tr>
-        <?= $topic2_list  ?>
-
-    </table>
 
 
+    <nav>
+        <ul class="nav-container">
+            <a class="nav-logo" href="../index.php">
+                <img src="./media/profile.png" alt="nav_logo">
+            </a>
+            <li class="nav_item"><a href="./produce.php" class="produce_">회사소개</a></li>
+            <li class="nav_item dropdown">커뮤니티
+                <div class="dropdown-content">
+                    <ul>
+                        <li><a href="index.php">topic1</a></li>
+                        <li><a href="topic2">topic2</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav_item"><a href="./contactus.php" class="contact_">고객지원</a></li>
+            <div class="login_box">
+                <?php if (!isset($_SESSION['user_id'])) { ?>
+                    <li class="nav_item"><a href="../view/login.php" class="sign_">로그인</a></li>
+                    <li class="nav_item"><a href="" class="sign_up">회원가입</a></li>
+                <?php } else { ?>
+                    <li class="nav_item"><a href="./view/author.php?id=<?= $row[0] ?>" class="sign_">회원정보</a></li>
+                    <li class="nav_item"><a href="./view/logout.php" class="sign_">로그아웃</a></li>
+                <?php } ?>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, amet nisi enim nemo iste doloribus fugiat, asperiores laudantium veniam recusandae, illo maiores sequi at? Quis harum autem quo tenetur in.</p>
 
 
+    <?php new_article_create($conn,"topic"); ?>
+    <?php new_article_create($conn,"topic2"); ?>
 
-
-
-
-
-
-    <hr>
-    <h2><?= $article['title'] ?></h2>
-    <p><?= $article['description'] ?></p>
-    <p><?= $author ?></p>
-    <hr>gi`
-    <p>
-
-    <?php
-    if (isset($_SESSION['user_id'])) {?>
-       <p><a href="../view/create.php">create</a></p>
-    <?php }
-    echo $modify_link, $delete_link;
-    ?>
-
-
-
-
-<footer>
-
-Copyright © 2021 ### rights reserved. 
-
-
-<h2>please workign</h2>
-<h3>we didit!!!!!!!</h3>
-</footer>
-
+    </div>
 
 </body>
 

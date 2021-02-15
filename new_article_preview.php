@@ -1,51 +1,68 @@
 <?php
 
 include './data/mysql_conn.php';
+function new_article_create($conn, $board_name, $limit = 5, $rand = false)
+{
+        
+        $sql = "SELECT 
+    {$board_name}.id, {$board_name}.title, 
+    {$board_name}.description, 
+    {$board_name}.created,
+    {$board_name}.author_id,
+    author.name,
+    author.profile 
+    FROM {$board_name}        
+    LEFT JOIN author
+    ON {$board_name}.author_id = author.id
+    ORDER BY ";
+   
+    if($rand == false)
+    {
+        $sql .="created DESC LIMIT {$limit}";
+    }
+    else
+    {
+        $sql .= "rand() LIMIT {$limit}";
+    }
+    
+    
 
-$sql = "SELECT 
-topic.id, topic.title, 
-topic.description, 
-topic.created,
-topic.author_id,
-author.name,
-author.profile 
-FROM topic        
-LEFT JOIN author
-ON topic.author_id = author.id
-ORDER BY created DESC
-LIMIT 5";
+    $result = mysqli_query($conn, $sql);
+    $list = '';
 
-$result = mysqli_query($conn, $sql);
-$list = '';
+    echo 
+    '<table class="board_table">
+    <thead>
+        <tr class="column_title">
+            <td>글 번호
+            </td>
+            <td>글 제목
+            </td>
+            <td>작성자
+            </td>
+            <td>작성일
+        </tr>
+    </thead>';
+        
+    while ($row = mysqli_fetch_array($result)) {
 
-?>
-<table class="topic_table">
-    <tr class="column_title">
-        <td>글번호
-        </td>
-        <td>글 제목
-        </td>
-        <td>작성자
-        </td>
-        <td>작성일
-    </tr>
-<?php
-while ($row = mysqli_fetch_array($result)) {
+        $escaped_title = htmlspecialchars($row['title']);
 
-    $escaped_title = htmlspecialchars($row['title']);
+        // list 방식
+        //$list .=  "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
 
-    // list 방식
-    //$list .=  "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
-
-    // 테이블 방식
-    $list .= "
-        <tr class=\"topic_content\">
-            <td>{$row['id']}</td>
-            <td><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></td>
-            <td>{$row['name']}</td>
-            <td>{$row['created']}</td>
-        </tr>";
+        // 테이블 방식
+        $list .= "
+        <tbody>
+            <tr class=\"board_content\">
+                <td>{$row['id']}</td>
+                <td><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></td>
+                <td>{$row['name']}</td>
+                <td>{$row['created']}</td>
+            </tr>
+        </tbody>";
+    }
+    
+      echo  $list. 
+    '</table>';
 }
-?>
-<?= $list ?>
-</table>
