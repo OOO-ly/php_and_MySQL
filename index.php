@@ -30,8 +30,6 @@ $title = "뛰놀자 튜토리얼";
     
     <div class="content-container">
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, amet nisi enim nemo iste doloribus fugiat, asperiores laudantium veniam recusandae, illo maiores sequi at? Quis harum autem quo tenetur in.</p>
-
         <article>
         <p><h2>공지사항</h2></p>    
         <?php new_article_create($conn,"topic"); ?>
@@ -40,6 +38,9 @@ $title = "뛰놀자 튜토리얼";
 
     </div>
     
+    <footer>
+        Copyright © 2021 by # . All right reserved.
+    </footer>
 
 </body>
 <script>includeHTML()</script>

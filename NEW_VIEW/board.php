@@ -38,9 +38,12 @@ $title = "뛰놀자 튜토리얼";
                 <!-- 게시글 id가 있다면 게시글 출력 -->
                 <?php if(isset($_GET['id'])){ 
                         $article = read_article($conn, $_GET['board_name'],$_GET['id']);?>
-                        <p><?= $article['title'] ?></p>
-                        <p><?= $article['description'] ?></p>
-                        <P><?= $article['name'] ?> </P>  
+                        <p class="article_title"><?= $article['title'] ?></p>
+                        <P class="article_info">by <a href="#"><?= $article['name'] ?></a> <t> <time> 작성일 <?= $article['created'] ?></time></P> 
+                        <hr>
+                        <p></p>
+                        <p class="article_content"><?= $article['description'] ?></p>
+                         
                         <?php } 
                     //게시글 id가 없다면 게시글 리스트    
                     else{?>
@@ -51,12 +54,14 @@ $title = "뛰놀자 튜토리얼";
                 //게시판이름이 topic 이라면
                 elseif($_GET['board_name'] == "topic2"){ ?>
                 <h2>Q & A</h2>
+                        <!-- 게시글 출력 코드 분리 필요 -->
                         <!-- //게시글 id가 있다면 게시글 출력 -->
-                        <?php if(isset($_GET['id'])){ ?>
+                        <?php if(isset($_GET['id'])){
                         $article = read_article($conn, $_GET['board_name'],$_GET['id']);?>
-                        <p><?= $article['title'] ?></p>
-                        <p><?= $article['description'] ?></p>
-                        <P><?= $article['name'] ?> </P>  
+                        <p class="article_title"><?= $article['title'] ?></p>
+                        <P class="article_info">by <a href="#"><?= $article['name'] ?></a> <time> 작성일 : <?= $article['created'] ?></time></P> 
+                        <hr>
+                        <p class="article_content"><?= $article['description'] ?></p>
                         <?php } 
                     //게시글 id가 없다면 게시글 리스트  
                     else{?> 
@@ -72,6 +77,10 @@ $title = "뛰놀자 튜토리얼";
             <?php } ?>  
         </article>
     </div>
+   
+    <footer>
+        Copyright © 2021 by # . All right reserved.
+    </footer>
 
 </body>
 <script>
