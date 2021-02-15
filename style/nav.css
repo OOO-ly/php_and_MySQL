@@ -1,40 +1,58 @@
+.content-container{
+    display: block;
+    padding-top: 50px;
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+    
+    margin-inline: 10%;
+    
+    }
+
 /* board */
+article{
+    /* margin-inline: 10%; */
+}
 
 .board_table{
-    margin: 6vw 2vw;
+padding: 0;
+/* margin: 1vw 2vw; */
+width: 100%;
+margin: 1vw, 10%;
 }
 
-.board_table tr td              {width:10%;} /*No 열 크기*/
-.board_table tr td+td          {width:45%;} /*제목 열 크기*/
-.board_table tr td+td+td       {width:20%;} /*작성일 열 크기*/
-.board_table tr td+td+td     {width:15%;} /*작성자 열 크기*/
+.board_table tr td {width:10%;} /*No 열 크기*/
+.board_table tr td+td {width:45%;} /*제목 열 크기*/
+.board_table tr td+td+td {width:20%;} /*작성일 열 크기*/
+.board_table tr td+td+td {width:15%;} /*작성자 열 크기*/
+
+
 
 thead{
-    text-align: center; 
-    background-color: skyblue;
-    padding: 10px;
+text-align: center;
+background-color: skyblue;
+padding: 10px;
 }
 tbody td{
-    text-decoration: none;
-    text-align: center;
-    border-bottom: 2px solid rgba(0,0,0,0.1);
-    width: 10px, 0;
-    height: 20px;
-    font-size: 14px;
-    color: #000;
-    /* border-left: 1px solid black; */
-    /* border: 1px solid black; */
+text-decoration: none;
+text-align: center;
+border-bottom: 2px solid rgba(0,0,0,0.1);
+width: 10px, 0;
+height: 20px;
+font-size: 14px;
+color: #000;
+/* border-left: 1px solid black; */
+/* border: 1px solid black; */
 }
 tbody td a{
-    text-decoration: none;
-    color: #000;
+text-decoration: none;
+color: #000;
 }
 tbody td a:active,
 tbody td a:focus,
 tbody td a:hover{
-    box-shadow: none;
-    outline: none;
-    color:  rgba(62, 48, 228);
+box-shadow: none;
+outline: none;
+color: rgba(62, 48, 228);
 
 }
 
@@ -71,16 +89,7 @@ border-top: 2px solid rgba(62, 48, 228);
 
 /* nav bar --------------- */
 
-.content-container{
-display: block;
-/* display: flex; */
-padding-top: 50px;
-padding-inline-start: 30px;
-padding-inline-end: 30px;
 
-margin: 0;
-
-}
 
 
 
