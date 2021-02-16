@@ -5,4 +5,14 @@
 
 $conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
 // $conn =mysqli_connect("localhost", "tnj_guest", "@@##WWEE", "tnj_tutorial");
+
+    if(isset($_SESSION['user_id'])){
+        $sql = "select id
+        from author
+        where name=\"{$_SESSION['user_id']}\"";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+}
+
+
 ?>
