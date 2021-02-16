@@ -1,6 +1,4 @@
 <?php
-set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL;");
-include 'data/mysql_conn.php';
 function new_article_create($conn, $board_name, $limit = 5, $rand = false)
 {
         
@@ -56,7 +54,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false)
         <tbody>
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
-                <td><a href=\"../NEW_VIEW/board.php?board_name={$board_name}&id={$row['id']}\">{$escaped_title}</a></td>
+                <td><a href=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\">{$escaped_title}</a></td>
                 <td>{$row['name']}</td>
                 <td>{$row['created']}</td>
             </tr>

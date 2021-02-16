@@ -1,7 +1,8 @@
 <?php
+set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL;");
 session_start();
-include "./data/mysql_conn.php";
-include "./new_article_preview.php"; 
+include "./model/mysql_conn.php";
+include "./control/new_article_preview.php"; 
 
 
 
@@ -19,7 +20,8 @@ $title = "뛰놀자 튜토리얼";
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../style/nav.css">
-    <script src="../include-html.js"></script>
+    <script src="../js/include-html.js"></script>
+    
     
 </head>
 

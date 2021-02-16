@@ -1,5 +1,5 @@
 <?php
-    include './data/mysql_conn.php';
+    include '../model/mysql_conn.php';
     session_start();
     //필드 수 초과한 id 접근 방지 용 filed count
     $topic_count_sql =  "select count(*) FROM topic";

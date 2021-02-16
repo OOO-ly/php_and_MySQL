@@ -1,10 +1,7 @@
 <?php
 set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL");
 session_start();
-include "../data/mysql_conn.php";
-include "../new_article_preview.php"; 
-include "../read_article.php"; 
-
+include "../model/mysql_conn.php";
 
 $title = "뛰놀자 튜토리얼";
 
@@ -18,7 +15,7 @@ $_SESSION['user_id'] ='hello';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/nav.css">
-    <script src="../include-html.js"></script>
+    <script src="../js/include-html.js"></script>
     <title><?=$title?></title> 
 </head>
 <body>
