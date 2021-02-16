@@ -2,12 +2,12 @@
         <a class="nav-logo" href="../index.php">
             <img src="../media/profile.png" alt="nav_logo">
         </a>
-        <li class="nav_item"><a href="./produce.php" class="produce_">회사소개</a></li>
+        <li class="nav_item"><a href="../NEW_VIEW/produce.php" class="produce_">회사소개</a></li>
         <li class="nav_item dropdown"><a href="../NEW_VIEW/board.php?board_name=topic">커뮤니티</a> 
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="../NEW_VIEW/board.php?board_name=topic">topic1</a></li>
-                    <li><a href="../NEW_VIEW/board.php?board_name=topic2">topic2</a></li>
+                    <li><a href="../NEW_VIEW/board.php?board_name=topic">공지사항</a></li>
+                    <li><a href="../NEW_VIEW/board.php?board_name=topic2">Q & A</a></li>
                 </ul>
             </div>
         </li>

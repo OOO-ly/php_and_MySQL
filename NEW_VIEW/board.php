@@ -20,7 +20,7 @@ $title = "뛰놀자 튜토리얼";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/nav.css">
     <script src="../include-html.js"></script>
-    <title>Document</title>
+    <title><?=$title?></title>
 </head>
 
 <body>
@@ -32,49 +32,29 @@ $title = "뛰놀자 튜토리얼";
             <?php 
             //게시판 이름이 있다면
             if(isset($_GET['board_name'])){ 
-                //게시판이름이 topic 이라면
-                if($_GET['board_name'] == "topic"){ ?>
-                <h2>공지사항</h2>
-                <!-- 게시글 id가 있다면 게시글 출력 -->
-                <?php if(isset($_GET['id'])){ 
-                        $article = read_article($conn, $_GET['board_name'],$_GET['id']);?>
-                        <p class="article_title"><?= $article['title'] ?></p>
-                        <P class="article_info">by <a href="#"><?= $article['name'] ?></a> <t> <time> 작성일 <?= $article['created'] ?></time></P> 
-                        <hr>
-                        <p></p>
-                        <p class="article_content"><?= $article['description'] ?></p>
-                         
-                        <?php } 
+                //게시판이름이 topic ( 공지사항 ) 이라면
+                if($_GET['board_name'] == "topic"){
+                    echo '<h1>공지사항</h1>';
+                    // 게시글 id가 있다면 게시글 출력 
+                    if(isset($_GET['id'])){ read_article($conn, $_GET['board_name'],$_GET['id']); } 
                     //게시글 id가 없다면 게시글 리스트    
-                    else{?>
-                    
-                    <?= new_article_create($conn,$_GET['board_name'],20); ?>
-                    <?php }               
-                    }
-                //게시판이름이 topic 이라면
-                elseif($_GET['board_name'] == "topic2"){ ?>
-                <h2>Q & A</h2>
-                        <!-- 게시글 출력 코드 분리 필요 -->
-                        <!-- //게시글 id가 있다면 게시글 출력 -->
-                        <?php if(isset($_GET['id'])){
-                        $article = read_article($conn, $_GET['board_name'],$_GET['id']);?>
-                        <p class="article_title"><?= $article['title'] ?></p>
-                        <P class="article_info">by <a href="#"><?= $article['name'] ?></a> <time> 작성일 : <?= $article['created'] ?></time></P> 
-                        <hr>
-                        <p class="article_content"><?= $article['description'] ?></p>
-                        <?php } 
+                    else{new_article_create($conn,$_GET['board_name'],20);}               
+                }
+                //게시판이름이 topic2 ( Q&A ) 라면
+                elseif($_GET['board_name'] == "topic2"){
+                    echo '<h1>Q & A</h1>';
+                    // 게시글 출력 코드 분리 필요
+                    //게시글 id가 있다면 게시글 출력
+                    if(isset($_GET['id'])){read_article($conn, $_GET['board_name'],$_GET['id']);}
                     //게시글 id가 없다면 게시글 리스트  
-                    else{?> 
-                        <?= new_article_create($conn,$_GET['board_name'],20); ?>
-                    <?php }
-                    //게시판 이름이 잘못됐다면                  
-                }else{ ?>
-                    <p>잘못된 접근입니다.</p>
-                <?php }
-                //게시판 이름이 없다면
-            }else{ ?>
-                    <p>잘못된 접근입니다.</p>
-            <?php } ?>  
+                    else{new_article_create($conn,$_GET['board_name'],20);}                         
+                }
+                //게시판 접근 도메인이 잘못됐다면 
+                else{ echo '<p>잘못된 접근입니다.</p>'; }
+            //게시판 메뉴 도메인이 없다면
+            }
+            else{ echo '<p>잘못된 접근입니다.</p>'; } 
+            ?>  
         </article>
     </div>
    

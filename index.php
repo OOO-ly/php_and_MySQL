@@ -7,7 +7,7 @@ include "./new_article_preview.php";
 
 $title = "뛰놀자 튜토리얼";
 
-// $_SESSION['user_id'] ='hello';
+// $_SESSION['user_id'] ='hello';https://www.hyundai.com/worldwide/ko/ioniq/ioniq5
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ $title = "뛰놀자 튜토리얼";
         <p><h2>공지사항</h2></p>    
         <?php new_article_create($conn,"topic"); ?>
         <p><h2>Q & A</h2></p>
-      <?php new_article_create($conn,"topic2"); ?></article>
+        <?php new_article_create($conn,"topic2"); ?></article>
 
     </div>
     

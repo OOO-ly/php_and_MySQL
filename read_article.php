@@ -15,6 +15,14 @@ function read_article($conn, $board_name,$article_id)
         where {$board_name}.id={$article_id}";
     
         $result = mysqli_query($conn, $sql);
-        return $article = mysqli_fetch_array($result);
-    }
-?>
+        $article = mysqli_fetch_array($result);
+
+
+    echo 
+        
+   '<p class="article_title">'.$article['title'].'</p>
+    <P class="article_info">by <a href="#">'.$article['name'].'</a> <time> 작성일  '.$article['created'].'</time></P>
+    <hr>
+    <p class="article_content"> '.$article['description'].' </p>';
+
+}
