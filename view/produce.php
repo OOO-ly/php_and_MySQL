@@ -20,7 +20,7 @@ $_SESSION['user_id'] ='hello';
 </head>
 <body>
 
-    <nav include-html="../view/nav.php"></nav>
+    <?php include_once '../view/nav.php'; ?>
     <div class="content-container">
 
 

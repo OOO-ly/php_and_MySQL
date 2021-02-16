@@ -25,7 +25,8 @@ $title = "뛰놀자 튜토리얼";
 
 <body>
 
-    <nav include-html="../view/nav.php"></nav>
+    <?php include_once '../view/nav.php'; ?>
+  
 
     <div class="content-container">
         <article>

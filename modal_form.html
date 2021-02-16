@@ -1,0 +1,30 @@
+<footer>
+    Copyright © 2021 by # . All right reserved.
+    <button id="open">delete</button>
+    <div class="modal hidden">
+        <div class="modal_overlay"></div>
+        <div class="modal__content">
+            <h3>삭제할 아이디를 입력해주세요</h3>
+            <form id="detete_form" action="process_delete_author.php" method="POST">
+                <input type="hidden" name="id" value="' . $filterd['id'] . '">
+                <p><label for="delete_id_input">아이디</label>
+                    <input type="text" id="delete_id_input" name="name">
+                </p>
+                <p><label for="delete_pw_input">비밀번호</label>
+                    <input type="password" id="delete_pw_input" name="password">
+                </p>
+                <input type="submit" value="저자 삭제" onclick="doublecheck();">
+            </form>
+            <form action="">
+            <input class="idd" type="text" placeholder="이름을 입력하세요" minlength="5" maxlength="13" value="hello" required/>
+            <input type="email" placeholder="이메일을 입력하세요" required>
+            <input type="password" placeholder="비밀번호" minlength="6" required>
+            <input type="url" placeholder="url을 입력하세요" value="https://"required>
+            <input type="number" min="12" placeholder="숫자를 적어주세요">
+            <input type="file" accept=".png,.jpg">
+            <button>
+            sub
+            </button>
+            <button> 취소 </button>
+        </div>
+    </div>

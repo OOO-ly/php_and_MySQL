@@ -20,30 +20,54 @@ $title = "뛰놀자 튜토리얼";
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../style/nav.css">
-    <script src="../js/include-html.js"></script>
     
-    
+
 </head>
 
 <body>
-  
 
-    <nav include-html="./view/nav.php"></nav>
-    
+
+    <?php include_once './view/nav.php'; ?>
+
     <div class="content-container">
 
+    
         <article>
-        <p><h2>공지사항</h2></p>    
-        <?php new_article_create($conn,"topic"); ?>
-        <p><h2>Q & A</h2></p>
-        <?php new_article_create($conn,"topic2"); ?></article>
+            <p>
+            <h2>공지사항</h2>
+            </p>
+            <?php new_article_create($conn,"topic"); ?>
+            <p>
+            <h2>Q & A</h2>
+            </p>
+            <?php new_article_create($conn,"topic2"); ?>
+        </article>
 
     </div>
-    
+
     <footer>
         Copyright © 2021 by # . All right reserved.
-    </footer>
+        <button id="open">delete</button>
+        <div class="modal hidden">
+            <div class="modal_overlay">
+            </div>
+            <div class="modal__content">
+                <h3>로그인</h3>
+                <form class="login_form" action="#" method="POST">
+                    <!-- 지금 hidden으로 보낼것이 있나? -->
+                    <!-- <input type="hidden" name="id" value="' . $filterd['id'] . '"> -->
+                        <p class="login_label">
+                        <label for="login_id_input">아이디</label>
+                        <input type="text" id="login_id_input" name="name" pattern="^([a-z0-9_]){3,20}$" required></p>
+                        <p class="login_label"><label for="delete_pw_input">비밀번호</label>
+                        <input type="password" id="delete_pw_input" name="password"required></p>
+                        <p><button class="submitbt">취소 </button><button> 로그인 </button></p>
+                </form>
+            </div>
+        </div>
 
+    </footer>
+    <script src="../js/modal.js"></script>
 </body>
-<script>includeHTML()</script>
+
 </html>

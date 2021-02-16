@@ -1,13 +1,13 @@
 
-const openBt = document.getElementById("open");
-const modal = document.querySelector(".modal");
-const overlay = modal.querySelector(".modal_overlay");
-const closebt = modal.querySelector("button");
+let openBt = document.getElementById("open");
+let modal = document.querySelector(".modal");
+let overlay = modal.querySelector(".modal_overlay");
+let closebt = modal.querySelector("button");
 
-const openModal = () => {
+let openModal = () => {
     modal.classList.remove("hidden");
 }
-const closeModal = () =>{
+let closeModal = () =>{
     modal.classList.add("hidden");
 }
 
