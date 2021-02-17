@@ -2,7 +2,7 @@
 
 
 $filtered = array(
-    
+
     'title' => mysqli_real_escape_string($conn, $_POST['title']),
     'description' => mysqli_real_escape_string($conn, $_POST['description']),
     //'author_id' => mysqli_real_escape_string($conn, $_POST['author_id']),//legacy
