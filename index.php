@@ -6,9 +6,11 @@ include "./control/new_article_preview.php";
 
 
 
+
+
 $title = "뛰놀자 튜토리얼";
 
-// $_SESSION['user_id'] ='hello';https://www.hyundai.com/worldwide/ko/ioniq/ioniq5
+
 
 ?>
 <!DOCTYPE html>
@@ -20,7 +22,7 @@ $title = "뛰놀자 튜토리얼";
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../style/nav.css">
-    
+
 
 </head>
 
@@ -31,11 +33,29 @@ $title = "뛰놀자 튜토리얼";
 
     <div class="content-container">
 
+       
 
-    
+        <p><?php 
+        if(isset($_SESSION['user_id'])){
+
+            echo $_SESSION['user_id'].'안녕하슈'; 
+            
+        }
+        else{
+            if($_SESSION['flag'] == 'failed_sign')
+            {
+            echo "<script>alert('실패 실패! 로그인 실패!');</script>";
+            session_destroy();
+            }
+            //session 값은 그리고 나서 사라집니다.
+            echo'하이'.$_SESSION['flag'];
+        }
+        ?></p>
+
         <article>
             <p>
             <h2>공지사항</h2>
+
             </p>
             <?php new_article_create($conn,"topic"); ?>
             <p>
@@ -45,26 +65,12 @@ $title = "뛰놀자 튜토리얼";
         </article>
 
     </div>
-    <div class="modal hidden">
-            <div class="modal_overlay">
-            </div>
-            <div class="modal__content">
-                <h3>로그인</h3>
-                <form class="login_form" action="#" method="POST">
-                        <p class="login_label">
-                        <label for="login_id_input">아이디</label>
-                        <input type="text" id="login_id_input" name="name" pattern="^([a-z0-9_]){3,20}$" required></p>
-                        <p class="login_label"><label for="delete_pw_input">비밀번호</label>
-                        <input type="password" id="delete_pw_input" name="password"required></p>
-                        <button> 로그인 </button>
-                </form>
-            </div>
-        </div>
+    <?php include './view/modal.php'; ?>
     <footer>
         Copyright © 2021 by # . All right reserved.
     </footer>
     <script src="../js/modal.js"></script>
-
+    <script src="../js/sign_in.js"></script>
 </body>
 
 </html>

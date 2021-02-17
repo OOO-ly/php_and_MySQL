@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
             <a class="nav-logo" href="../index.php">
                 <img src="../media/profile.png" alt="nav_logo">
             </a>
-            <li class="nav_item"><a href="../produce.php" class="produce_">회사소개</a></li>
+            <li class="nav_item"><a href="../view/produce.php" class="produce_">회사소개</a></li>
             <li class="nav_item dropdown">커뮤니티
                 <div class="dropdown-content">
                     <ul>
@@ -30,10 +32,11 @@
 
             <div class="login_box">
                 <?php if (!isset($_SESSION['user_id'])) { ?>
+                    
                     <li class="nav_item"><a href="../view/login.php" class="sign_">로그인</a></li>
                     <li class="nav_item"><a href="" class="sign_up">회원가입</a></li>
                 <?php } else { ?>
-                    <li class="nav_item"><a href="../view/author.php?id=<?= $row[0] ?>" class="sign_">회원정보</a></li>
+                    <li class="nav_item"><a href="../view/author.php" class="sign_">회원정보</a></li>
                 <?php } ?>
             </div>
         </ul>
@@ -41,7 +44,7 @@
 
     
 <?php
-    session_start();
+   
     if(!isset($_SESSION['user_id'])){
 ?>
 
@@ -56,7 +59,7 @@
         }
     else{
 ?>
-        <script> alert("로그인 성공")</script>
+        <!-- <script> alert("로그인 성공")</script> -->
         <?=$_SESSION['user_id']?>님 로그인되었습니다.
        <form action="../process/logout.php">
        <input type="submit" value="로그아웃">
