@@ -2,18 +2,15 @@
 
 include '../model/mysql_conn.php';
 
-$_SESSION['user_id'] = $_POST['user_id'];
-$_SESSION['user_pw'] = $_POST['user_pw'];
-
 
 $filtered = array(
 
     'name' => mysqli_real_escape_string($conn, $_POST['user_id']),
     'password' => mysqli_real_escape_string($conn, $_POST['user_pw']),
-    'profile' => mysqli_real_escape_string($conn, $_POST['profile']),
+    'profile' => mysqli_real_escape_string($conn, $_POST['user_profile']),
 );
 
-
+// die(var_dump($_POST));
 
 $sql = "
     INSERT INTO author
@@ -31,8 +28,10 @@ $result = mysqli_query($conn, $sql);
 if (!$result) {
     if(mysqli_errno($conn) == 1062)
     {
-        echo "중복 아이디 입니다.";
-        echo '<a href="author.php">돌아가기</a>';
+        session_start();
+        $_SESSION['flag'] = 'failed_sign_up_1062';
+        $prevPage = $_SERVER['HTTP_REFERER'];
+        header('location:'.$prevPage);
         die();
     }
     else if($filtered['name'] = '')
@@ -40,6 +39,14 @@ if (!$result) {
     echo mysqli_errno($conn);
     echo mysqli_error($conn);
     error_log(mysqli_error($conn));
+    die();
 } else {
-    header("Location: ./author.php");
+    session_start();
+    $_SESSION['user_id'] = $_POST['user_id'];
+    $_SESSION['flag'] = 'sign_up_succeed';
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    // header('location:'.$prevPage);
+    //혹은 메인 페이지로 갈 수도 있음
+    header('location: ../index.php');
+    die();
 }

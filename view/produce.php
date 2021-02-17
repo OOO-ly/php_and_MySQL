@@ -5,7 +5,6 @@ include "../model/mysql_conn.php";
 
 $title = "뛰놀자 튜토리얼";
 
-$_SESSION['user_id'] ='hello';
 
 ?>
 <!DOCTYPE html>
@@ -28,7 +27,19 @@ $_SESSION['user_id'] ='hello';
     <img src="../media/profile.png" alt="intern_profile_img">
     <!-- text-align centen 
     position righr -->
-    <p>안녕하세요 <?=$_SESSION['user_id']?> 님 </p>
+    <p>안녕하세요
+    <?php
+    
+    if(isset($_SESSION['user_id'])){
+
+        echo $_SESSION['user_id'].' 님';
+
+    }
+    else{
+        echo '방문객 님';
+    }
+    ?> 
+    </p>
     <p>php MySQL로 web tutorial 진행중인 O3 입니다.</p>
     <p>현재 보고 계신 페이지는 되도록 하드코딩으로 제작된 페이지로
         다소 가독성이 떨어짐을 양해 말씀드립니다.</p>
@@ -40,6 +51,7 @@ $_SESSION['user_id'] ='hello';
 
 
     </div>
+   
     <footer>
         Copyright © 2021 by # . All right reserved.
         <p>spacial thanks : 

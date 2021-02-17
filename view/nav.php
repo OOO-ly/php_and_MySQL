@@ -30,3 +30,8 @@
         </div>
     </ul>
 </nav>
+
+
+<!-- 절대경로 상수!!!! 감사합니다 ㅠㅠㅠㅠㅠ -->
+<?php include_once __DIR__.'/modal.php'; ?>
+<script src="../js/modal.js"></script>

@@ -3,13 +3,11 @@ session_start();
 include '../model/mysql_conn.php';
 
 
-$_SESSION['user_id'] = $_POST['user_id'];
-$_SESSION['user_pw'] = $_POST['user_pw'];
 
 $filtered = array(
 
-    'user_id' => htmlspecialchars($_SESSION['user_id']),
-    'user_pw' => htmlspecialchars($_SESSION['user_pw'])
+    'user_id' => htmlspecialchars($_POST['user_id']),
+    'user_pw' => htmlspecialchars($_POST['user_pw'])
 );
 
 
@@ -22,15 +20,11 @@ while($row = mysqli_fetch_array($result))
 {
     if($row['name'] == $filtered['user_id'] && $row['password'] == $filtered['user_pw'])
     {
+        unset($_SESSION['user_pw'],$filtered['user_pw']);
+        $_SESSION['user_id'] = $_POST['user_id'];
         $prevPage = $_SERVER['HTTP_REFERER'];
         header('location:'.$prevPage);
         die();
-    }
-    else{
-        echo "DB : ". nl2br("{$row['name']} {$row['password']}\n");
-        
-        echo "SS : ". nl2br("{$filtered['user_id']} {$filtered['user_pw']}\n");
-        echo "<hr>";
     }
 }
 
