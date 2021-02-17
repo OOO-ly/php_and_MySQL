@@ -317,7 +317,8 @@ color: white;
 
 /* login ---- */
 
-form.login_form{
+form.sign_in_form,
+form.sign_up_form{
     
     width: 100%;
     display: flex;
@@ -327,7 +328,8 @@ form.login_form{
     }
     
     
-    form.login_form input{
+    form.sign_in_form input,
+    form.sign_up_form input{
         
 
         display: block;
@@ -339,16 +341,22 @@ form.login_form{
         border: 1px solid #d3dce6;
         transition: border-color 200ms ease-in-out;
     }
-    P .login_label{ 
-
-        display: flex;
-
+    
+    
+    form.sign_in_form input:active,
+    form.sign_in_form input:focus,
+    form.sign_in_form input:hover
+    {
+    box-shadow: none;
+    outline: none;
+    /* border-left: 2px solid rgba(62, 48, 228); */
+    /* border-top: 2px solid rgba(62, 48, 228); */
     }
-    
-    
-    form.login_form input:active,
-    form.login_form input:focus,
-    form.login_form input:hover
+
+
+    form.sign_up_form input:active,
+    form.sign_up_form input:focus,
+    form.sign_up_form input:hover
     {
     box-shadow: none;
     outline: none;
@@ -400,6 +408,7 @@ form.login_form{
 h3{
     margin: 0;
 }
+
 .hidden{
     display: none;
 }

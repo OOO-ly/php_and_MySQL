@@ -38,7 +38,6 @@ session_destroy();
 unset($filtered);
 session_start();
 $_SESSION['flag'] = 'failed_sign';
-
 $prevPage = $_SERVER['HTTP_REFERER'];
 header('location:'.$prevPage);
 

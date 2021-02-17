@@ -37,18 +37,15 @@ $title = "뛰놀자 튜토리얼";
 
         <p><?php 
         if(isset($_SESSION['user_id'])){
-
-            echo $_SESSION['user_id'].'안녕하슈'; 
+            echo $_SESSION['user_id'].' 님 안녕하세요'; 
             
         }
         else{
-            if($_SESSION['flag'] == 'failed_sign')
-            {
-            echo "<script>alert('실패 실패! 로그인 실패!');</script>";
-            session_destroy();
+            if(isset($_SESSION['flag']) && ($_SESSION['flag'] == 'failed_sign')){
+                echo "<script>alert('실패 실패! 로그인 실패!');</script>";
+                $_SESSION['flag'] ='';
             }
-            //session 값은 그리고 나서 사라집니다.
-            echo'하이'.$_SESSION['flag'];
+    
         }
         ?></p>
 
