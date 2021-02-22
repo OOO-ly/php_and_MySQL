@@ -1,5 +1,5 @@
 <?php
-include '../data/mysql_conn.php';
+include '../model/mysql_conn.php';
 session_start();
 if(isset($_SESSION['user_id'])){
     $escaped_userid = htmlspecialchars($_SESSION['user_id']);

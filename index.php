@@ -3,12 +3,11 @@
 session_start();
 include "./model/mysql_conn.php";
 include "./control/new_article_preview.php"; 
+include "./control/title_con.php";
 
 
 
 
-
-$title = "뛰놀자 튜토리얼";
 
 
 
@@ -37,7 +36,8 @@ $title = "뛰놀자 튜토리얼";
        
 
         <p><?php 
-       
+    
+
         if(isset($_SESSION['flag'])){
             if($_SESSION['flag'] == 'failed_sign'){
                 echo "<script>alert('실패 실패! 로그인 실패!');</script>";
@@ -54,24 +54,24 @@ $title = "뛰놀자 튜토리얼";
         }
 
         if(isset($_SESSION['user_id'])){
-            echo $_SESSION['user_id'].' 님 안녕하세요'; 
-            
+            echo $_SESSION['user_id'].' 님 안녕하세요';   
         }
         ?></p>
 
         <article>
-            <p>
-            <h2>공지사항</h2>
-
-            </p>
-            <?php new_article_create($conn,"topic"); ?>
-            <p>
-            <h2>Q & A</h2>
-            </p>
-            <?php new_article_create($conn,"topic2"); ?>
+            <?php new_article_create($conn,"topic",5); ?>
+            <?php new_article_create($conn,"topic2",5); ?>
         </article>
 
     </div>
+
+
+
+    
+
+   
+
+    
     
     <footer>
         Copyright © 2021 by # . All right reserved.

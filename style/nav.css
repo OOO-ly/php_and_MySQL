@@ -18,10 +18,20 @@ height: auto;
     justify-content: center;
 } */
 
-article h1{
+article .board_title a{
 margin-top: 50px;
 font-size: 30px;
+text-decoration: none;
+color: #000;
 }
+
+article .board_title a:hover{
+    margin-top: 50px;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgba(62, 48, 228);
+    }
+
 
 
 /* footer */
@@ -43,6 +53,7 @@ article {
 
 
 
+
 .article_title{
     
     margin-left: 0;
@@ -57,6 +68,12 @@ article {
     padding-top: 50px;
     
 }
+.article_title#editable_title:before{
+    content: "제목을 입력해주세요";
+    cursor: text;
+}
+
+
 .article_info{
     font-size: 8pt;
 
@@ -104,9 +121,10 @@ margin: 1vw, 10%;
 
 
 
-thead td{
+thead th{
 text-align: center;
-background-color: skyblue;
+background-color:  rgb(74, 60, 226);
+color: white;
 padding: 5px;
 }
 tbody td{
@@ -297,13 +315,15 @@ left: 45%;
 top: -8px;
 width: 0;
 height: 0;
-
+color: white;
 border-left: 4px solid transparent;
 border-right: 4px solid transparent;
 border-bottom: 8px solid rgb(255, 255, 255);
+
 }
 .dropdown >.dropdown-content ul li:first-child:hover:after {
 border-bottom-color: rgba(62, 48, 228);
+color: white;
 }
 
 
@@ -314,6 +334,25 @@ background-color: rgba(62, 48, 228);
 color: white;
 /* background-image: linear-gradient(rgb(42, 232, 253), white); */
 }
+
+.dropdown-content .dropdown_bt{
+    color: inherit;
+    
+    font-weight: bold;
+    background-color: rgba(0,0,0,0);
+    outline: 0;
+    border:0 none;
+    width: 100%;
+    cursor: pointer;
+}
+.dropdown-content .dropdown_bt:hover{
+    color: white;
+}
+.dropdown-content .dropdown_bt:focus{
+    border:0 none;
+    outline: 0;
+}
+
 
 
 /* login ---- */
@@ -443,7 +482,7 @@ h3{
         padding: 4px;
         margin-right: 2px;
     }
-    article h1{
+    article .board_title{
         margin-top: 50px;
         font-size: 30px;
         }

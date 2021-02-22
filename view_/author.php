@@ -1,6 +1,6 @@
 <?php
 
-include '../data/mysql_conn.php';
+include '../model/mysql_conn.php';
 
 $sql = "SELECT * from author";
 $result = mysqli_query($conn, $sql);

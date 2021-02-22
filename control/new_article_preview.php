@@ -1,8 +1,8 @@
 <?php
-function new_article_create($conn, $board_name, $limit = 5, $rand = false)
+
+function new_article_create($conn, $board_name, $limit = 5, $rand = false )
 {
-        
-        $sql = "SELECT 
+    $sql = "SELECT 
     {$board_name}.id, {$board_name}.title, 
     {$board_name}.description, 
     {$board_name}.created,
@@ -28,17 +28,41 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false)
     $result = mysqli_query($conn, $sql);
     $list = '';
 
+    
+    switch($board_name){
+        case "topic":
+            echo  '<p>
+            <h2 class="board_title">
+            <a href="../VIEW/board.php?board_name=topic">
+            공지사항
+            </a>
+            </h2>
+            </p>';
+            break;
+        case "topic2";
+            echo  '<p>
+            <h2 class="board_title">
+            <a href="../view/board.php?board_name=topic2">
+            Q &amp; A
+            </a>
+            </h2>
+            </p>';
+    }
+    
+  
+
+
     echo 
     '<table class="board_table">
     <thead>
         <tr class="column_title">
-            <td>글 번호
-            </td>
-            <td>글 제목
-            </td>
-            <td>작성자
-            </td>
-            <td>작성일
+            <th>글 번호
+            </th>
+            <th>글 제목
+            </th>
+            <th>작성자
+            </th>
+            <th>작성일
         </tr>
     </thead>';
         

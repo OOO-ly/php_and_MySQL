@@ -5,9 +5,8 @@
     $topic_count_sql =  "select count(*) FROM topic";
     $board_count_sql = "select count(*) FROM topic2";
 
+    include '../control/new_article_preview.php';
 
-
-    include './new_article_preview.php';
     //자유 게시판 목록 불러오기
 
     function new_topic_write($conn, $topic_name){
@@ -158,14 +157,6 @@
         <?= new_article_create($conn,"topic"); ?>
         <hr>
         <?= new_article_create($conn,"topic2"); ?>
-
-
-
-
-
-
-
-
 
 
     <hr>

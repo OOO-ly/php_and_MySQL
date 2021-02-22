@@ -150,17 +150,38 @@
 <?php
 
 
-function hi($a, $b)
-{
-    $string = "SELECT {$b}.id ";
+// function hi($a, $b)
+// {
+//     $string = "SELECT {$b}.id ";
 
-    echo $string;
+//     echo $string;
+// }
+
+
+$string='2string';
+
+switch($string)
+{
+    case 1:
+        echo "this is 1";
+        break;
+    case 2:
+        echo "this is 2";
+        break;
+    case '2string':
+        echo "this is a string";
+        break;
+    default:
+        echo "hihi";
+        break;
 }
 
 
-hi("1","author");
 
-?>
+
+// hi("1","author");
+
+// ?>
 
 </body>
 
