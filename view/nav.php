@@ -10,18 +10,18 @@
                     <li>
                         <a href="../VIEW/board.php?board_name=topic">공지사항</a>
                         <!-- <form action="../VIEW/board.php" method="post">
-                            <input type="hidden" name="board_name" value="topic"> -->
-                            
-                            <!-- <button type="submit"class="dropdown_bt" >공지사항</button> 
+                            <input type="hidden" name="board_name" value="topic">
+                            <input type="hidden" name="cotrol_flag" value="list">
+                            <button type="submit"class="dropdown_bt" >공지사항</button> 
                         </form>        -->
                     </li>
                     <li>
                         <a href="../view/board.php?board_name=topic2">Q &amp; A</a>
-                        <!-- <form action="../VIEW/board.php" method="post">
+                         <!-- <form action="../VIEW/board.php" method="post">
                             <input type="hidden" name="board_name" value="topic2">
-                           
-                            <button type="submit"class="dropdown_bt" >Q &amp; A</button>  -->
-                        </form> 
+                            <input type="hidden" name="cotrol_flag" value="list">
+                            <button type="submit"class="dropdown_bt" >Q &amp; A</button>  
+                        </form>  -->
                     </li>
                 </ul>
             </div>

@@ -8,8 +8,6 @@ include"../control/title_con.php";
 
 
 
-// $_SESSION['user_id'] ='hello';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,17 +44,16 @@ include"../control/title_con.php";
         }
 
         if(isset($_SESSION['user_id'])){
-            echo $_SESSION['user_id'].' 님 안녕하세요';   
+            
+            echo $_SESSION['user_id'].' 님 안녕하세요'; 
+            // var_dump($_SESSION['user-id']);
         }
         ?></p>
+
+
         <article>
             <?php 
             //게시판 이름이 있다면
-
-
-          
-
-
             if(isset($_GET['board_name'])){ 
                 //게시판이름이 topic ( 공지사항 ) 이라면
                 if($_GET['board_name'] == "topic"){
@@ -64,24 +61,55 @@ include"../control/title_con.php";
                     if(isset($_GET['id'])){ read_article($conn, $_GET['board_name'],$_GET['id']); } 
                     
 
-                    elseif(isset($_POST['cotrol_read']) == "read"){
-
-                        echo 
-                        '<hr>
+                    // control flag 분기 switch 문으로 변경 
+                    // 효율의 대한 문의 필요.
+                    if(isset($_POST['control_flag'])){
+                    switch(isset($_POST['control_flag'])){
+                        case 'read':
+                            ?>
+                        <hr>
                         <p class="article_title">'.$_POST['test_title'].'</p>
                       
                         <hr>
-                        <p class="article_content"> '.$_POST['test_description'].' </p>';
-                        
-                        $_POST['control_flag'] = NULL;
-                    }
+                        <p class="article_content"> '.$_POST['test_description'].' </p>
+                        <?php
 
-                    // 게시글 생성
-                    elseif(isset($_POST['cotrol_flag']) == "create"){
-                       include "../view/create.php";
-                       $_POST['control_flag'] = NULL;
-                    }
-                    
+
+                    }       
+                        
+                        elseif($_POST['control_flag'] == "read"){
+
+                        ?>
+                       
+                        $_POST['control_flag'] = NULL;
+                        }
+
+                        // 게시글 생성
+                         elseif($_POST['control_flag'] == "create"){
+                        //    include "../view/create.php";
+                        ?>
+                            <p>
+                            <h2 class="board_title create_board">
+                            <a href="../VIEW/board.php?board_name=topic">
+                            "공지사항"에 작성 중...
+                            </a>
+                            </h2>
+                            </p>
+                            <p contenteditable="true" class="article_title" id="editable_title" >
+                                제목을 입력해주세요
+                            </p>
+                            <P class="article_info">
+                                by  <a href="#">
+                                        <?= $_SESSION['user-id'] ?>
+                                    </a> 
+                            </P>
+                            <hr>
+                            <p contenteditable="true"  class="article_content" id="editable_text"> 
+                                내용을 입력해주세요
+                            </p>
+                        <?php
+                         }
+                        }
                    
                     //게시글 id가 없다면 게시글 리스트    
                     else{new_article_create($conn,$_GET['board_name'],8);}               
@@ -106,10 +134,35 @@ include"../control/title_con.php";
            
         </article>
         
-        <form action="../VIEW/board.php?board_name=topic" method="post">
-        <input type="hidden" name="cotrol_flag" value="create">
-            <input type="submit" value="글 쓰기?">
-        </form>
+
+           <!-- $_GET['id']라는경로를 살릴 거기 떄문에 예외처리를 해야함
+            id가 없는 걸 조회하면 오류 나오도록 쿼리로 검색하는게 나을 거임 -->
+        
+        <div class="bt_group">
+            <?php if($_POST['control_flag'] == 'create'){?>
+                <form id="form" action="../view/board.php?board_name=topic" method="POST" onsubmit="return getContent()">
+                <input type="hidden" name="control_flag" value="read"/>
+                <input id="form_title" style="display: none" name="test_title" />
+                <textarea id="form_textarea" style="display:none" name="test_description">
+                </textarea> 
+                <input type="submit" value="글 작성" />
+            </form>
+            <?php } if($_SESSION['user_id']){ ?>
+                    <form action="../VIEW/board.php?board_name=topic" method="post">
+                        <input type="hidden" name="control_flag" value="create"/>
+                        <input type="submit" value="글 쓰기"/>
+                    </form>
+            <?php }if(isset($_GET['id'])){ ?>
+                <form action="../VIEW/board.php?board_name=topic" method="post">
+                    <input type="hidden" name="control_flag" value="modify"/>
+                    <input type="submit" value="글 수정"/>
+                </form>
+                <form action="../VIEW/board.php?board_name=topic" method="post">
+                    <input type="hidden" name="control_flag" value="delete"/>
+                    <input type="submit" value="글 삭제"/>
+                </form>
+            <?php } ?>
+        </div>
     
    
             
@@ -117,7 +170,7 @@ include"../control/title_con.php";
     <footer>
         Copyright © 2021 by # . All right reserved.
     </footer>
-
 </body>
 
 </html>
+    
