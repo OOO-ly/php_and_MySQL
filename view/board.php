@@ -7,6 +7,8 @@ include"../control/read_article.php";
 include"../control/borad_control_flag.php";
 include"../control/title_con.php";
 
+header("Cache-Control: no-cache");
+
 if(!isset($_POST['control_flag'])){
     $_POST['control_flag'] = 'list';
 }

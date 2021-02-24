@@ -1,6 +1,8 @@
 <?php
 include "../model/mysql_conn.php";
 session_start();
+header("Cache-Control: no-cache");
+
 
 // die(var_dump(
 // $_POST['edit_title'],

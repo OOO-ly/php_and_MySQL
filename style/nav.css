@@ -80,17 +80,20 @@ article {
     cursor: text;
     /* color: rgba(0, 0, 0); */
     /* -webkit-user-modify: read-write; */
-    
-    
-}
-.article_title#editable_title:focus:before{
-    
-    /* color: rgba(0, 0, 0, 0.2); */
-    cursor: text;
-    /* 어떻게하면 수정전에 스타일을 줄 수 있을까? */
+    border: 0;
+    /* border-bottom: 1px solid black; */
+
 }
 
-.article_title#editable_title{
+
+.article_title#editable_title:focus::-webkit-input-placeholder {
+    color:transparent; 
+    border: 0;
+}
+
+
+
+.article_title#editable_title:focus{
     /* color: rgba(0, 0, 0, 0.2); */
     cursor: text;
     /* 어떻게하면 수정전에 스타일을 줄 수 있을까? */
@@ -102,7 +105,7 @@ article {
     line-height: 22px;
     height: 500px;
     width: 100%;
-   
+
 }
 
 

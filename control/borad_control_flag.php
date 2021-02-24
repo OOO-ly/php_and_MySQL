@@ -59,8 +59,11 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 </p> -->
                 <!--                             -->
                 <!-- 기능 구현 -->
-                <form  action="./create_acticle.php">
-                    <input type="text" class="article_title" id="editable_title" placeholder="제목을 입력하세요" autocomplete="off">
+                <form  action="../create_acticle.php" method="POST">
+                    <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
+                    <input type="text" class="article_title"
+                    name="edit_title"
+                    id="editable_title" placeholder="제목을 입력하세요" autocomplete="off">
                     <P class="article_info">
                     by  
                             <?= $_SESSION['user_id'] ?>
