@@ -8,20 +8,18 @@
             <div class="dropdown-content">
                 <ul>
                     <li>
-                        <a href="../VIEW/board.php?board_name=topic">공지사항</a>
-                        <!-- <form action="../VIEW/board.php" method="post">
-                            <input type="hidden" name="board_name" value="topic">
-                            <input type="hidden" name="cotrol_flag" value="list">
+                        <!-- <a href="../VIEW/board.php?board_name=topic">공지사항</a> -->
+                        <form action="../VIEW/board.php?board_name=topic" method="post">
+                            <input type="hidden" name="control_flag" value="list">
                             <button type="submit"class="dropdown_bt" >공지사항</button> 
-                        </form>        -->
+                        </form>       
                     </li>
                     <li>
-                        <a href="../view/board.php?board_name=topic2">Q &amp; A</a>
-                         <!-- <form action="../VIEW/board.php" method="post">
-                            <input type="hidden" name="board_name" value="topic2">
-                            <input type="hidden" name="cotrol_flag" value="list">
+                        <!-- <a href="../view/board.php?board_name=topic2">Q &amp; A</a> -->
+                         <form action="../VIEW/board.php?board_name=topic2" method="post">
+                            <input type="hidden" name="control_flag" value="list">
                             <button type="submit"class="dropdown_bt" >Q &amp; A</button>  
-                        </form>  -->
+                        </form> 
                     </li>
                 </ul>
             </div>
@@ -38,13 +36,31 @@
             
             <?php } else { ?>
 
-            <li class="nav_item"><a  class="sign_">회원정보</a></li>
+            <li class="nav_item sign_"><a  class="sign_"> <?= $_SESSION['user_id'] ?></a></li>
             <li class="nav_item"><a href="../control/sign_out.php" class="sign_">로그아웃</a></li>
             <?php } ?>
         </div>
     </ul>
 </nav>
 
+<!-- 회원가입 /로그인 관련 -->
+<?php include_once __DIR__.'/modal.php'; 
 
-<?php include_once __DIR__.'/modal.php'; ?>
+if(isset($_SESSION['flag'])){
+    if($_SESSION['flag'] == 'failed_sign'){
+        echo "<script>alert('실패 실패! 로그인 실패!');</script>";
+        $_SESSION['flag'] ='';
+    }
+    else if($_SESSION['flag'] == 'failed_sign_up_1062'){
+        echo "<script>alert('중복 아이디입니다!');</script>";
+        $_SESSION['flag'] ='';
+    }
+    else if($_SESSION['flag'] == 'sign_up_succeed'){
+        echo "<script>alert('회원 가입 성공!');</script>";
+        $_SESSION['flag'] ='';
+    }
+}
+
+
+?>
 <script src="../js/modal.js"></script>

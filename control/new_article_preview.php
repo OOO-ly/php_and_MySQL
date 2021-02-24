@@ -73,12 +73,20 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
         // list 방식
         //$list .=  "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
 
+
+        //a 태그 
+        //<a href=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\">{$escaped_title}</a>
         // 테이블 방식
         $list .= "
         <tbody>
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
-                <td><a href=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\">{$escaped_title}</a></td>
+                <td> 
+                    <form action=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
+                        <input type=\"hidden\" name=\"control_flag\" value=\"read\">
+                        <button type=\"submit\"class=\"board_content\" >{$escaped_title}</button>  
+                    </form> 
+                </td>
                 <td>{$row['name']}</td>
                 <td>{$row['created']}</td>
             </tr>

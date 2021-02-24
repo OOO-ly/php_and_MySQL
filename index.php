@@ -35,28 +35,7 @@ include "./control/title_con.php";
 
        
 
-        <p><?php 
-    
-
-        if(isset($_SESSION['flag'])){
-            if($_SESSION['flag'] == 'failed_sign'){
-                echo "<script>alert('실패 실패! 로그인 실패!');</script>";
-                $_SESSION['flag'] ='';
-            }
-            else if($_SESSION['flag'] == 'failed_sign_up_1062'){
-                echo "<script>alert('중복 아이디입니다!');</script>";
-                $_SESSION['flag'] ='';
-            }
-            else if($_SESSION['flag'] == 'sign_up_succeed'){
-                echo "<script>alert('회원 가입 성공!');</script>";
-                $_SESSION['flag'] ='';
-            }
-        }
-
-        if(isset($_SESSION['user_id'])){
-            echo $_SESSION['user_id'].' 님 안녕하세요';   
-        }
-        ?></p>
+      
 
         <article>
             <?php new_article_create($conn,"topic",5); ?>

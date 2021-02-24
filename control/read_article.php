@@ -17,10 +17,26 @@ function read_article($conn, $board_name,$article_id)
         $result = mysqli_query($conn, $sql);
         $article = mysqli_fetch_array($result);
 
+        switch($board_name)
+        {
+            case 'topic':
+                $board_title = '공지사항';
+                break;
+            case 'topic2':
+                $board_title = 'Q &amp; A';
+                break;
 
-    echo 
-        
-   '<p class="article_title">'.$article['title'].'</p>
+        }
+            
+    echo '
+    <p>
+    <h2 class="board_title create_board">
+    <a href="../VIEW/board.php?board_name='.$board_name.'">
+   '.$board_title.'
+    </a>
+    </h2>
+    </p>
+   <p class="article_title">'.$article['title'].'</p>
     <P class="article_info">by <a href="#">'.$article['name'].'</a> <time> 작성일  '.$article['created'].'</time></P>
     <hr>
     <p class="article_content"> '.$article['description'].' </p>';

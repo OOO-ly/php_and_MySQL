@@ -1,7 +1,6 @@
 function getContent() {
    
-    var div_val = document.getElementById("editable_title").innerHTML;
-    document.getElementById("form_title").value = div_val;
+    document.getElementById("form_title").value = document.getElementById("editable_title").innerHTML;
     document.getElementById("form_textarea").value = document.getElementById("editable_text").innerHTML;
    
     if (div_val == '') {
