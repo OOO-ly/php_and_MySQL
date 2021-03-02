@@ -29,45 +29,49 @@ include "../control/title_con.php";
 
 
     <?php include_once '../view/nav.php'; ?>
+	
+	
 
     <div class="content-container">
 
-        <div id="map" style="width:500px;height:400px;"></div>
+		<div class="map-container">
 
-        <script>
-        var container = document.getElementById('map');
-        var options = {
-            center: new kakao.maps.LatLng(37.54699, 127.09598),
-            level: 2,
-            keyboardShortcuts: true,
+		<form action="/" method="post">
+		<div class="map-control">
+		<input type="button" value="에이엔디플랫폼">
+		<input type="button" value="더큰내일센터">
+		<input type="button" value="좌표 출력">
 
-        };
-
-
-        var map = new kakao.maps.Map(container, options);
-        // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-        var mapTypeControl = new kakao.maps.MapTypeControl();
-        // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-        // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-        map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
-        var zoomControl = new kakao.maps.ZoomControl();
-        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-			
-	
-        </script>
-
-
-        <hr>
-        <form action="/" method="post">
-
-            <input type="button" value="에이엔디플랫폼">
-            <input type="button" value="더큰내일센터">
-			<input type="button" value="좌표 출력">
-			
-        </form>
+		</form>
 
 		<p id="pointt">????</p>
+		</div>
+	
+			<div id="map" class="map1" >
+				<script>
+				var container = document.getElementById('map');
+				var options = {
+					center: new kakao.maps.LatLng(37.54699, 127.09598),
+					level: 2,
+					keyboardShortcuts: true,
+
+				};
+				var map = new kakao.maps.Map(container, options);
+				// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+				var mapTypeControl = new kakao.maps.MapTypeControl();
+				// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+				// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+				map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+				var zoomControl = new kakao.maps.ZoomControl();
+				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+				</script>
+			</div>
+		</div>
+		
+	
+
+        <hr>
+       
     </div>
 
 

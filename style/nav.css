@@ -10,7 +10,29 @@ margin-block-end: 10%;
 
 height: auto; 
 z-index: 10;
+
 }
+
+
+.map-container{
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.map-control{
+display: ;
+}    
+.map1 {}
+    width: 500px;
+    height: 500px;
+
+    right: 0;
+    margin-bottom: 20px;
+    
+}
+
+
 
 /* article {
     display: flex;
