@@ -24,7 +24,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav_item"><a href="./contactus.php" class="contact_">고객지원</a></li>
+        <li class="nav_item"><a href="../view/contactus.php" class="contact_">고객지원</a></li>
         <div class="login_box">
             <?php if (!isset($_SESSION['user_id'])) { ?>
             

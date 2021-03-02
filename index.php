@@ -18,7 +18,7 @@ include "./control/title_con.php";
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../style/nav.css">
@@ -29,13 +29,10 @@ include "./control/title_con.php";
 <body>
 
 
+
     <?php include_once './view/nav.php'; ?>
 
     <div class="content-container">
-
-       
-
-      
 
         <article>
             <?php new_article_create($conn,"topic",5); ?>
@@ -43,14 +40,6 @@ include "./control/title_con.php";
         </article>
 
     </div>
-
-
-
-    
-
-   
-
-    
     
     <footer>
         Copyright © 2021 by # . All right reserved.
