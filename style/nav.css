@@ -4,8 +4,7 @@ padding-top: 50px;
 padding-inline-start: 30px;
 padding-inline-end: 30px;
 
-/* margin-inline: 10%; */
-margin-inline: 5%;
+
 margin-block-end: 10%;
 
 height: auto; 
@@ -21,15 +20,14 @@ z-index: 10;
     align-items: center;
 }
 .map-control{
-display: ;
+/* display: ; */
 }    
-.map1 {}
+.map1 {
     width: 500px;
     height: 500px;
 
     right: 0;
     margin-bottom: 20px;
-    
 }
 
 
@@ -42,17 +40,17 @@ display: ;
 
 article .board_title a{
 margin-top: 50px;
-font-size: 30px;
+
 text-decoration: none;
 color: #000;
 }
 
 article .board_title a:hover{
     margin-top: 50px;
-    font-size: 30px;
+    
     text-decoration: none;
     color: rgba(62, 48, 228);
-    }
+}
 
 
 
