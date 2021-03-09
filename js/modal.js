@@ -22,9 +22,9 @@ let closeModal = () =>{
 }
 
 
-overlay.addEventListener("click",closeModal);
-sign_in_bt.addEventListener("click",openModal);
-sign_up_bt.addEventListener("click",openModal);
+overlay.addEventListener("Click",closeModal);
+sign_in_bt.addEventListener("Click",openModal);
+sign_up_bt.addEventListener("Click",openModal);
 
 
 // 로그인 셋

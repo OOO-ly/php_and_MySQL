@@ -23,13 +23,12 @@ z-index: 10;
 .map-control{
 display: ;
 }    
-.map1 {}
+.map1 {
     width: 500px;
     height: 500px;
 
     right: 0;
-    margin-bottom: 20px;
-    
+    margin-bottom: 20px;   
 }
 
 
@@ -42,14 +41,14 @@ display: ;
 
 article .board_title a{
 margin-top: 50px;
-font-size: 30px;
+/* font-size: 30px; */
 text-decoration: none;
 color: #000;
 }
 
 article .board_title a:hover{
     margin-top: 50px;
-    font-size: 30px;
+    /* font-size: 30px; */
     text-decoration: none;
     color: rgba(62, 48, 228);
     }
@@ -427,8 +426,9 @@ color: white;
     outline: 0;
     border:0 none;
     width: 100%;
-    height: 0px;
+    height: inherit;
     cursor: pointer;
+	/* z-index: -1; */
     
 }
 .dropdown-content .dropdown_bt:hover{

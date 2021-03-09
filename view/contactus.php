@@ -5,6 +5,7 @@ include "../model/mysql_conn.php";
 include "../control/new_article_preview.php"; 
 include "../control/title_con.php";
 
+define ("__rootpath","/test_final",true);
 
 ?>
 <!DOCTYPE html>

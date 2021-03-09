@@ -1,13 +1,16 @@
 <?php
-set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL");
+// set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL");
+define ("__rootpath","/test_final",true);
 session_start();
-include"../model/mysql_conn.php";
-include"../control/new_article_preview.php"; 
-include"../control/read_article.php"; 
-include"../control/borad_control_flag.php";
-include"../control/title_con.php";
+include "../model/mysql_conn.php";
+include "../control/new_article_preview.php"; 
+include "../control/read_article.php"; 
+include "../control/borad_control_flag.php";
+include "../control/title_con.php";
 
 header("Cache-Control: no-cache");
+
+
 
 if(!isset($_POST['control_flag'])){
     $_POST['control_flag'] = 'list';
@@ -67,16 +70,16 @@ if(!isset($_POST['control_flag'])){
             </form> -->
             <?php   //$_POST['control_flag'] = NULL;
                     } if($_POST['control_flag'] == 'list'){ ?>
-                    <form action="../VIEW/board.php?board_name=<?=$_GET['board_name']?>" method="post">
+                    <form action="../view/board.php?board_name=<?=$_GET['board_name']?>" method="post">
                         <input type="hidden" name="control_flag" value="create"/>
                         <input class="submit_bt" type="submit" value="글 쓰기"/>
                     </form>
             <?php }if(isset($_GET['id'])){ ?>
-                <form action="../VIEW/board.php?board_name=topic" method="post">
+                <form action="../view/board.php?board_name=topic" method="post">
                     <input type="hidden" name="control_flag" value="modify"/>
                     <input class="submit_bt" type="submit" value="글 수정"/>
                 </form>
-                <form action="../VIEW/board.php?board_name=topic" method="post">
+                <form action="../view/board.php?board_name=topic" method="post">
                     <input type="hidden" name="control_flag" value="delete"/>
                     <input class="submit_bt" type="submit" value="글 삭제"/>
                 </form>
@@ -90,6 +93,6 @@ if(!isset($_POST['control_flag'])){
         Copyright © 2021 by # . All right reserved.
     </footer>
 </body>
-
+<script src="<?= __rootpath ?>/js/modal.js"></script>
 </html>
     

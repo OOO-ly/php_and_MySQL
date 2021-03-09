@@ -4,7 +4,7 @@ session_start();
 include "../model/mysql_conn.php";
 
 $title = "뛰놀자 튜토리얼";
-
+define ("__rootpath","/test_final",true);
 
 ?>
 <!DOCTYPE html>
@@ -14,12 +14,12 @@ $title = "뛰놀자 튜토리얼";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/nav.css">
-    <script src="../js/include-html.js"></script>
     <title><?=$title?></title> 
 </head>
 <body>
 
-    <?php include_once '../view/nav.php'; ?>
+    <?php 
+	include_once $_SERVER['DOCUMENT_ROOT'].'/test_final/view/nav.php'; ?>
     <div class="content-container">
 
 
@@ -29,7 +29,9 @@ $title = "뛰놀자 튜토리얼";
     position righr -->
     <p>안녕하세요
     <?php
-    
+    echo $_SERVER['DOCUMENT_ROOT'];
+		echo rootpath;
+		
     if(isset($_SESSION['user_id'])){
 
         echo $_SESSION['user_id'].' 님';
@@ -60,7 +62,4 @@ $title = "뛰놀자 튜토리얼";
     </footer>
 
 </body>
-<script>
-includeHTML()
-</script>
 </html>

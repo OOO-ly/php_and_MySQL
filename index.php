@@ -1,11 +1,11 @@
 <?php
-// set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL;");
+// set_include_path(" /php_and_MySQL;");
 session_start();
-include "./model/mysql_conn.php";
-include "./control/new_article_preview.php"; 
-include "./control/title_con.php";
 
-
+define ("__rootpath","/test_final",true);
+include __DIR__."/model/mysql_conn.php";
+include __DIR__."/control/new_article_preview.php"; 
+include __DIR__."/control/title_con.php";
 
 
 
@@ -21,7 +21,7 @@ include "./control/title_con.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="<?= __rootpath ?>/style/nav.css">
 
 
 </head>
@@ -30,12 +30,13 @@ include "./control/title_con.php";
 
 
 
-    <?php include_once './view/nav.php'; ?>
+    <?php include_once __DIR__.'/view/nav.php'; ?>
 
     <div class="content-container">
 
         <article>
-            <?php new_article_create($conn,"topic",5); ?>
+            <?php 
+			new_article_create($conn,"topic",5); ?>
             <?php new_article_create($conn,"topic2",5); ?>
         </article>
 
@@ -46,5 +47,5 @@ include "./control/title_con.php";
     </footer>
     
 </body>
-
+<script src="<?= __rootpath ?>/js/modal.js"></script>
 </html>

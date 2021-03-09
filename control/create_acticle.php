@@ -1,5 +1,5 @@
 <?php
-include "../model/mysql_conn.php";
+include "./model/mysql_conn.php";
 session_start();
 header("Cache-Control: no-cache");
 

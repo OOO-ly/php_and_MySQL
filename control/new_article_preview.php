@@ -33,7 +33,9 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
         case "topic":
             echo  '<p>
             <h2 class="board_title">
-            <a href="../VIEW/board.php?board_name=topic">
+            <a href="
+			'.__rootpath.'
+			/view/board.php?board_name=topic">
             공지사항
             </a>
             </h2>
@@ -42,7 +44,8 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
         case "topic2";
             echo  '<p>
             <h2 class="board_title">
-            <a href="../view/board.php?board_name=topic2">
+            <a href="
+			'.__rootpath.'/view/board.php?board_name=topic2">
             Q &amp; A
             </a>
             </h2>

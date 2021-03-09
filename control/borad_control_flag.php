@@ -40,7 +40,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 ?>
                 <p>
                 <h2 class="board_title create_board">
-                <a href="../VIEW/board.php?board_name=<?= $board_name ?>">
+                <a href="../view/board.php?board_name=<?= $board_name ?>">
                 <?= $board_title ?>
                 </a>
                 </h2>
@@ -59,7 +59,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 </p> -->
                 <!--                             -->
                 <!-- 기능 구현 -->
-                <form  action="../create_acticle.php" method="POST">
+                <form  action="./create_acticle.php" method="POST">
                     <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
                     <input type="text" class="article_title"
                     name="edit_title"
