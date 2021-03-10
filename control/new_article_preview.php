@@ -27,7 +27,12 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
 
     $result = mysqli_query($conn, $sql);
     $list = '';
-
+	if($result == false){
+	?>
+	<!-- <script> alert("못불러왔어요");</script> -->
+	
+	<?php
+	}
     
     switch($board_name){
         case "topic":
@@ -70,7 +75,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     </thead>';
         
     while ($row = mysqli_fetch_array($result)) {
-
+		
         $escaped_title = htmlspecialchars($row['title']);
 
         // list 방식
@@ -85,7 +90,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
                 <td> 
-                    <form action=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
+                    <form action=\"../view/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
                         <input type=\"hidden\" name=\"control_flag\" value=\"read\">
                         <button type=\"submit\"class=\"board_content\" >{$escaped_title}</button>  
                     </form> 

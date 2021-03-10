@@ -40,7 +40,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 ?>
                 <p>
                 <h2 class="board_title create_board">
-                <a href="../view/board.php?board_name=<?= $board_name ?>">
+                <a href="<?= __rootpath ?>/view/board.php?board_name=<?= $board_name ?>">
                 <?= $board_title ?>
                 </a>
                 </h2>

@@ -1,10 +1,3 @@
-<?php
-
-
-echo $_SERVER['DOCUMENT_ROOT'];
-
-?>
-
 
 <nav>
     <ul class="nav-container">
@@ -52,7 +45,7 @@ echo $_SERVER['DOCUMENT_ROOT'];
 </nav>
 
 <!-- 회원가입 /로그인 관련 -->
-<?php include_once __DIR__.'/view/modal.php'; 
+<?php include_once __rootpath.'/view/modal.php'; 
 
 if(isset($_SESSION['flag'])){
     if($_SESSION['flag'] == 'failed_sign'){

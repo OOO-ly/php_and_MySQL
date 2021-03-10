@@ -17,12 +17,12 @@ let overlay = document.querySelector(".modal_overlay");
 let openModal = () => {
     modal.classList.remove("hidden");
 }
-let closeModal = () =>{
+let closeModal = () => {
     modal.classList.add("hidden");
 }
 
 
-overlay.addEventListener("Click",closeModal);
+// overlay.addEventListener("Click",closeModal);
 sign_in_bt.addEventListener("Click",openModal);
 sign_up_bt.addEventListener("Click",openModal);
 

@@ -93,6 +93,6 @@ if(!isset($_POST['control_flag'])){
         Copyright © 2021 by # . All right reserved.
     </footer>
 </body>
-<script src="<?= __rootpath ?>/js/modal.js"></script>
+<script src="../js/modal.js"></script>
 </html>
     

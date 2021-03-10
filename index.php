@@ -3,9 +3,9 @@
 session_start();
 
 define ("__rootpath","/test_final",true);
-include __DIR__."/model/mysql_conn.php";
-include __DIR__."/control/new_article_preview.php"; 
-include __DIR__."/control/title_con.php";
+include "model/mysql_conn.php";
+include "control/new_article_preview.php"; 
+include "control/title_con.php";
 
 
 
@@ -30,12 +30,17 @@ include __DIR__."/control/title_con.php";
 
 
 
-    <?php include_once __DIR__.'/view/nav.php'; ?>
+    <?php include_once 'view/nav.php'; ?>
 
+	
+	
+	
     <div class="content-container">
-
+	
         <article>
+			
             <?php 
+			include "control/test_con.php";
 			new_article_create($conn,"topic",5); ?>
             <?php new_article_create($conn,"topic2",5); ?>
         </article>
@@ -47,5 +52,5 @@ include __DIR__."/control/title_con.php";
     </footer>
     
 </body>
-<script src="<?= __rootpath ?>/js/modal.js"></script>
+<script src="js/modal.js"></script>
 </html>

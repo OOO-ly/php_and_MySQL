@@ -1,5 +1,5 @@
 <?php
-set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL");
+// set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL");
 session_start();
 include "../model/mysql_conn.php";
 
@@ -28,11 +28,7 @@ define ("__rootpath","/test_final",true);
     <!-- text-align centen 
     position righr -->
     <p>안녕하세요
-    <?php
-    echo $_SERVER['DOCUMENT_ROOT'];
-		echo rootpath;
-		
-    if(isset($_SESSION['user_id'])){
+    <?php if(isset($_SESSION['user_id'])){
 
         echo $_SESSION['user_id'].' 님';
 
@@ -62,4 +58,5 @@ define ("__rootpath","/test_final",true);
     </footer>
 
 </body>
+	<script src="../js/modal.js"></script>
 </html>
