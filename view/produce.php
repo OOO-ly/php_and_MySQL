@@ -19,7 +19,7 @@ define ("__rootpath","/test_final",true);
 <body>
 
     <?php 
-	include_once $_SERVER['DOCUMENT_ROOT'].'/test_final/view/nav.php'; ?>
+	include_once '../view/nav.php'; ?>
     <div class="content-container">
 
 
@@ -58,5 +58,4 @@ define ("__rootpath","/test_final",true);
     </footer>
 
 </body>
-	<script src="../js/modal.js"></script>
 </html>

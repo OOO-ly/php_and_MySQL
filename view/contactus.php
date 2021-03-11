@@ -20,7 +20,7 @@ define ("__rootpath","/test_final",true);
     </script>
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../style/nav.css">
-
+  
 
 </head>
 
@@ -35,24 +35,13 @@ define ("__rootpath","/test_final",true);
 
     <div class="content-container">
 
-		<div class="map-container">
-
-		<form action="/" method="post">
-		<div class="map-control">
-		<input type="button" value="에이엔디플랫폼">
-		<input type="button" value="더큰내일센터">
-		<input type="button" value="좌표 출력">
-
-		</form>
-
-		<p id="pointt">????</p>
-		</div>
+		<div class="map-container"></div>
 	
 			<div id="map" class="map1" >
 				<script>
 				var container = document.getElementById('map');
 				var options = {
-					center: new kakao.maps.LatLng(37.54699, 127.09598),
+					center: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338),
 					level: 2,
 					keyboardShortcuts: true,
 
@@ -62,17 +51,36 @@ define ("__rootpath","/test_final",true);
 				var mapTypeControl = new kakao.maps.MapTypeControl();
 				// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
 				// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+
+				var marker = new kakao.maps.Marker({
+				map: map,
+				position: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338)
+				});
+
+				var infowindow = new kakao.maps.InfoWindow({
+					content: '<div style="width:150px;text-align:center;padding:6px 0;">제주더큰내일센터:)</div>'
+				});
+				infowindow.open(map, marker);
+				
+
 				map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
 				var zoomControl = new kakao.maps.ZoomControl();
 				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 				</script>
 			</div>
 		</div>
-		
-	
+		<p id="pointt"></p>
 
         <hr>
        
+		<form action="/" method="post">
+		<div class="map-control">
+		<input type="button" value="에이엔디플랫폼" onclick="set_andplatform();">
+		<input type="button" value="더큰내일센터" onclick="set_thekunnaeil();">
+		<input type="button" value="좌표 출력" onclick="getposition();">
+
+		</form>
+
     </div>
 
 
@@ -80,30 +88,98 @@ define ("__rootpath","/test_final",true);
 
     <script>
 	
-
-		// let postion = new kakao.maps.LatLng(123,456);
 		let postion = map.getCenter();
 		var asdasd= postion.getLat();
 		var zxczxc= postion.getLng();
-		document.getElementById("pointt").textContent = asdasd +","+zxczxc;
+		document.getElementById("pointt").textContent = "위도 : "+asdasd +" , 경도 : "+zxczxc;
 	
 
 
     var imageSrc = '../media/profile.png', // 마커이미지의 주소입니다    
         imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
         imageOption = {
-            offset: new kakao.maps.Point(27, 90)
+            offset: new kakao.maps.Point(27, 130)
         }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+        markerPosition = new kakao.maps.LatLng(33.48155552342617, 126.50896084853338); // 마커가 표시될 위치입니다
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         position: markerPosition,
         image: markerImage // 마커이미지 설정 
     });
+
+	let set_andplatform = () => {
+
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	geocoder.addressSearch('제주특별자치도 제주시 도남동 693-1 3층', function(result, status) {
+
+	// 정상적으로 검색이 완료됐으면 
+	if (status === kakao.maps.services.Status.OK) {
+
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+			// 결과값으로 받은 위치를 마커로 표시합니다
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: coords
+			});
+
+			// 인포윈도우로 장소에 대한 설명을 표시합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				content: '<div style="width:150px;text-align:center;padding:6px 0;">에이엔디플랫폼</div>'
+			});
+			infowindow.open(map, marker);
+
+			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			map.panTo(coords);
+		} 
+		});    
+	}
+
+	let set_thekunnaeil = () => {
+
+var geocoder = new kakao.maps.services.Geocoder();
+
+geocoder.addressSearch('제주특별자치도 제주시 오라동 1770', function(result, status) {
+
+// 정상적으로 검색이 완료됐으면 
+if (status === kakao.maps.services.Status.OK) {
+
+		var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+		// 결과값으로 받은 위치를 마커로 표시합니다
+		// var marker = new kakao.maps.Marker({
+		// 	map: map,
+		// 	position: coords
+		// });
+
+		// 인포윈도우로 장소에 대한 설명을 표시합니다
+		// var infowindow = new kakao.maps.InfoWindow({
+		// 	content: '<div style="width:150px;text-align:center;padding:6px 0;">제주더큰내일센터 :)</div>'
+		// });
+		// infowindow.open(map, marker);
+
+		// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		map.panTo(coords);
+	} 
+	});    
+}
+
+
+
+	let getposition = () => {
+		
+		postion = map.getCenter();
+		asdasd= postion.getLat();
+		zxczxc= postion.getLng();
+		marker.setPosition(postion);
+		document.getElementById("pointt").textContent = "위도 : "+asdasd +" , 경도 : "+zxczxc;
+		marker.setMap(map);
+	}
 
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
@@ -116,5 +192,4 @@ define ("__rootpath","/test_final",true);
     </footer>
 
 </body>
-
 </html>

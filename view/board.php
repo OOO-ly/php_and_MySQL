@@ -25,13 +25,14 @@ if(!isset($_POST['control_flag'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/nav.css">
-    <script src="../js/getcontent.js"></script>
+    <!-- <script defer src="js/modal.js"></script> -->
     <title><?=$title?></title>
 </head>
 
 <body>
 
-    <?php include_once '../view/nav.php';?>
+    <?php include '../view/nav.php'; ?>
+
   
 
     <div class="content-container">
@@ -93,6 +94,5 @@ if(!isset($_POST['control_flag'])){
         Copyright © 2021 by # . All right reserved.
     </footer>
 </body>
-<script src="../js/modal.js"></script>
 </html>
     

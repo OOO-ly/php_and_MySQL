@@ -90,7 +90,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
                 <td> 
-                    <form action=\"../view/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
+                    <form action=\"".__rootpath."/view/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
                         <input type=\"hidden\" name=\"control_flag\" value=\"read\">
                         <button type=\"submit\"class=\"board_content\" >{$escaped_title}</button>  
                     </form> 

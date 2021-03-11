@@ -1,5 +1,3 @@
-
-
 let sign_in_bt = document.getElementById("sign_in_bt");
 let sign_in_form = document.querySelector(".sign_in_form");
 
@@ -22,9 +20,9 @@ let closeModal = () => {
 }
 
 
-// overlay.addEventListener("Click",closeModal);
-sign_in_bt.addEventListener("Click",openModal);
-sign_up_bt.addEventListener("Click",openModal);
+overlay.addEventListener("click",closeModal);
+sign_in_bt.addEventListener("click",openModal);
+sign_up_bt.addEventListener("click",openModal);
 
 
 // 로그인 셋

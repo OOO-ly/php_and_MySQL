@@ -12,6 +12,7 @@ include "control/title_con.php";
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,27 +22,25 @@ include "control/title_con.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="<?= __rootpath ?>/style/nav.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <!-- <script defer src="js/modal.js"></script> -->
 
-
+    
 </head>
 
 <body>
 
 
 
-    <?php include_once 'view/nav.php'; ?>
-
-	
+    <?php include_once 'view/nav.php'; 
+     ?>
 	
 	
     <div class="content-container">
 	
         <article>
 			
-            <?php 
-			include "control/test_con.php";
-			new_article_create($conn,"topic",5); ?>
+            <?php new_article_create($conn,"topic",5); ?>
             <?php new_article_create($conn,"topic2",5); ?>
         </article>
 
@@ -52,5 +51,4 @@ include "control/title_con.php";
     </footer>
     
 </body>
-<script src="js/modal.js"></script>
 </html>

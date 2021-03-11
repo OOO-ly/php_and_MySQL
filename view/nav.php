@@ -38,14 +38,18 @@
             <?php } else { ?>
 
             <li class="nav_item sign_"><a  class="sign_"> <?= $_SESSION['user_id'] ?></a></li>
-            <li class="nav_item"><a href="<?= __rootpath ?>control/sign_out.php" class="sign_">로그아웃</a></li>
+            <li class="nav_item"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_">로그아웃</a></li>
             <?php } ?>
         </div>
     </ul>
 </nav>
 
+    <script defer src="<?=__rootpath?>/js/modal.js"></script>
+    
 <!-- 회원가입 /로그인 관련 -->
-<?php include_once __rootpath.'/view/modal.php'; 
+<?php 
+
+include __DIR__."/modal.php";
 
 if(isset($_SESSION['flag'])){
     if($_SESSION['flag'] == 'failed_sign'){
@@ -53,7 +57,8 @@ if(isset($_SESSION['flag'])){
         $_SESSION['flag'] ='';
     }
     else if($_SESSION['flag'] == 'failed_sign_up_1062'){
-        echo "<script>alert('중복 아이디입니다!');</script>";
+        // echo "<script>alert('중복 아이디입니다!');</script>";
+        echo "<script>alert('중복아이디 입니다!');</script>";
         $_SESSION['flag'] ='';
     }
     else if($_SESSION['flag'] == 'sign_up_succeed'){
@@ -61,6 +66,7 @@ if(isset($_SESSION['flag'])){
         $_SESSION['flag'] ='';
     }
 }
+
 
 
 ?>

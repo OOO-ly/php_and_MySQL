@@ -1,6 +1,5 @@
 <div class="modal hidden">
-    <div class="modal_overlay">
-    </div>
+    <div class="modal_overlay"></div>
     <div class="modal__content">
             <div class="modal_form">
                 <div class="sign_in_form">
@@ -38,6 +37,3 @@
             </div>
         </div>
     </div>
-
-  
-   
