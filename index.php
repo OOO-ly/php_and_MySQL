@@ -1,15 +1,10 @@
 <?php
-// set_include_path(" /php_and_MySQL;");
 session_start();
 
 define ("__rootpath","/test_final",true);
 include "model/mysql_conn.php";
 include "control/new_article_preview.php"; 
 include "control/title_con.php";
-
-
-
-
 
 ?>
 
@@ -23,8 +18,6 @@ include "control/title_con.php";
   
     <title><?= $title ?></title>
     <link rel="stylesheet" href="style/nav.css">
-    <!-- <script defer src="js/modal.js"></script> -->
-
     
 </head>
 
@@ -32,16 +25,20 @@ include "control/title_con.php";
 
 
 
-    <?php include_once 'view/nav.php'; 
+    <?php 
+    include_once 'view/nav.php'; 
      ?>
 	
 	
     <div class="content-container">
 	
         <article>
-			
-            <?php new_article_create($conn,"topic",5); ?>
-            <?php new_article_create($conn,"topic2",5); ?>
+            <?php 
+            new_article_create($conn,"topic",5); 
+            ?>
+            <?php 
+            new_article_create($conn,"topic2",5); 
+            ?>
         </article>
 
     </div>
