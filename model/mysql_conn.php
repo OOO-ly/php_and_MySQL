@@ -11,7 +11,7 @@
 //13.125.238.215
 // $conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
 // $conn = mysqli_connect("{$ip}:53216", "root", "12341234", "tnj_tutorial");
-$conn = mysqli_connect("54.180.26.214:58604", "root", "12341234", "tnj_tutorial");
+$conn = mysqli_connect("15.164.212.203:57726", "root", "12341234", "tnj_tutorial");
 // $conn =mysqli_connect("localhost", "tnj_guest", "@@##WWEE", "tnj_tutorial");
 	
 if(	mysqli_connect_error() )

@@ -2,14 +2,15 @@
 include '../data/mysql_conn.php';
 settype($_POST['id'],'integer');
 $filtered = array(
-    'id' => mysqli_real_escape_string($conn, $_POST['id']),
-    'title' => mysqli_real_escape_string($conn, $_POST['title']),
-    'description' => mysqli_real_escape_string($conn, $_POST['description'])
+    'board_name' => mysqli_real_escape_string($conn, $_POST['board_name']),
+    'id' => mysqli_real_escape_string($conn, $_POST['board_id']),
+    'title' => mysqli_real_escape_string($conn, $_POST['edit_title']),
+    'description' => mysqli_real_escape_string($conn, $_POST['edit_description'])
 );
 
 
 $sql = "
-    UPDATE topic
+    UPDATE {$filtered['board_name']}
     SET 
         title = '{$filtered['title']}',
         description = '{$filtered['description']}'
@@ -24,7 +25,10 @@ if ($result == false){
    
 } else {
     // echo '성공했습니다. <a href="index.php?id='.$filtered['id'].'">돌아가기</a>';
-    header("Location: ./index.php?id={$filtered['id']}");
+    // header("Location: ./index.php?id={$filtered['id']}");
+    // header("Location: ./board.php?id={$filtered['id']}");
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    header('location:'.$prevPage);
 }
 //echo $sql;
 ?>
