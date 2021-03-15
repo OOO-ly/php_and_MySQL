@@ -299,8 +299,7 @@ text-decoration: none;
 color:inherit;
 }
 
-.nav_item:hover,
-.nav_item a:focus{
+.nav_item:hover{
 background-color: rgb(42, 232, 253);
 color: white;
 }
@@ -572,7 +571,7 @@ h3{
     
 }
  .submit_bt{
-
+    text-decoration: none;
     margin-left: 4px;
     background-color: rgb(74, 60, 226);
     border: none;

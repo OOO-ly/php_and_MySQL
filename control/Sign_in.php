@@ -18,7 +18,8 @@ while($row = mysqli_fetch_array($result))
             unset($_SESSION['user_pw'],$filtered['user_pw']);
             $_SESSION['user_id'] = $_POST['user_id'];
             $prevPage = $_SERVER['HTTP_REFERER'];
-            header('location:'.$prevPage);
+            // header('location:'.$prevPage);
+            header('location: ../index.php' );
             die();
         }
     }
@@ -28,7 +29,8 @@ while($row = mysqli_fetch_array($result))
     session_start();
     $_SESSION['flag'] = 'failed_sign';
     $prevPage = $_SERVER['HTTP_REFERER'];
-    header('location:'.$prevPage);
+    // header('location:'.$prevPage);
+    header('location: ../index.php' );
 //    }
 
 

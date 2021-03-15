@@ -1,6 +1,6 @@
 <?php
-include '../data/mysql_conn.php';
-settype($_POST['id'],'integer');
+include '../model/mysql_conn.php';
+settype($_POST['board_id'],'integer');
 $filtered = array(
     'board_name' => mysqli_real_escape_string($conn, $_POST['board_name']),
     'id' => mysqli_real_escape_string($conn, $_POST['board_id']),
@@ -9,6 +9,8 @@ $filtered = array(
 );
 
 
+
+// die(var_dump($filtered));
 $sql = "
     UPDATE {$filtered['board_name']}
     SET 

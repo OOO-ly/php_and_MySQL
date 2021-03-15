@@ -51,7 +51,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 </p>
                 <P class="article_info">
                     by  
-                            <?= $_SESSION['user_id'] ?>
+                            
                 </P>
                 <hr>
                 <p contenteditable="true"  class="article_content" id="editable_text"> 
@@ -92,50 +92,50 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
           
                 // $ss = "$_GET["board_name"]';
 
-                echo $ss;
+                // echo $ss;
 
-                $sql = '
+                $sql = "
                 SELECT
-                {$_GET["board_name"]}.title,
-                {$_GET["board_name"]}.description,
-                {$_GET["xboard_name"]}.id
-                FROM {$_GET["board_name"]}
+                {$_GET['board_name']}.title,
+                {$_GET['board_name']}.description,
+                {$_GET['board_name']}.id
+                FROM {$_GET['board_name']}
                 LEFT JOIN author 
-                ON {$_GET["board_name"]}.author_id = author.id 
+                ON {$_GET['board_name']}.author_id = author.id 
                 WHERE 
-                    {$_GET["board_name"]}.author_id = 
-                    (select id from author where name = "{$_SESSION["user_id"]}")
-                ';
+                    {$_GET['board_name']}.author_id = 
+                    (select id from author where name =\"{$_SESSION["user_id"]}\")
+                ";
                 
 
-                $sql = '
-                SELECT
-                topic.title,
-                topic.description,
-                topic.id
-                FROM topic
-                LEFT JOIN author
-                ON topic.author_id = author.id
-                WHERE topic.author_id = (select id from author where name = "lee4");
-                ';
+                // $sql = '
+                // SELECT
+                // topic.title,
+                // topic.description,
+                // topic.id
+                // FROM topic
+                // LEFT JOIN author
+                // ON topic.author_id = author.id
+                // WHERE topic.author_id = (select id from author where name = "lee4");
+                // ';
                 // echo $sql;
                 $result = mysqli_query($conn,$sql);
                 // echo var_dump($result);
-                $row = mysqli_fetch_array($result);            
+                $row = mysqli_fetch_array($result);        
+                
+                    
                     ?>    
                     <form  action="<?= __rootpath ?>/process/process_modify.php" method="POST">
                     <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
-                    <input type="hidden" name="board_id" value="<?php $row[$_GET["board_name"].'.id']?>"/>
-                    <input type="text" class="article_title" name="edit_title" id="editable_title" value="<?= $row[$_GET["board_name"].'.title'] ?>" autocomplete="off">
+                    <input type="hidden" name="board_id" value="<?= $row['id'] ?>"/>
+                    <input type="text" class="article_title" name="edit_title" id="editable_title" value="<?= $row['title'] ?>" autocomplete="off">
                     <P class="article_info">
                     by  
-                            <?= $_SESSION['user_id'] ?>
+                            <?= $_SESSION["user_id"] ?>
                     </P>
                     <hr>
                     <!-- <textarea class="article_content" id="editable_text"></textarea> -->
-                    <textarea class="article_content" id="editable_text" name="edit_description">
-                    <?= $row[$_GET["board_name"].'.description'] ?>
-                    </textarea>
+                    <textarea class="article_content" id="editable_text" name="edit_description"><?= $row['description'] ?></textarea>
                     
                     <button class="submit_bt" id="create_sub" type="submit">글 수정</button>
                     </form>

@@ -13,12 +13,7 @@ include "control/title_con.php";
 // 현재 위치를 가져오는 기능 구현
 // 현재 위치를 기준으로 원하는 위치의 거리 재는 기능 추가 
 // 현재 구현중인 브랜치에서 main과 머지하는 작업이 필요
-// 경로문제가 많이 생길 예정
 
-//local path
-// include "./model/mysql_conn.php";
-// include "./control/new_article_preview.php"; 
-// include "./control/title_con.php";
 
 
 ?>
@@ -32,8 +27,8 @@ include "control/title_con.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title><?= $title ?></title>
-    <!-- <link rel="stylesheet" href="style/nav.css"> -->
-    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="style/nav.css">
+
     
 </head>
 
@@ -42,7 +37,6 @@ include "control/title_con.php";
 
 
     <?php 
-    // include_once './view/nav.php'; 
     include_once 'view/nav.php'; 
      ?>
     <div class="content-container">
