@@ -27,13 +27,20 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
 
     $result = mysqli_query($conn, $sql);
     $list = '';
-
+	if($result == false){
+	?>
+	<!-- <script> alert("못불러왔어요");</script> -->
+	
+	<?php
+	}
     
     switch($board_name){
         case "topic":
             echo  '<p>
             <h2 class="board_title">
-            <a href="../VIEW/board.php?board_name=topic">
+            <a href="
+			'.__rootpath.'
+			/view/board.php?board_name=topic">
             공지사항
             </a>
             </h2>
@@ -42,7 +49,8 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
         case "topic2";
             echo  '<p>
             <h2 class="board_title">
-            <a href="../view/board.php?board_name=topic2">
+            <a href="
+			'.__rootpath.'/view/board.php?board_name=topic2">
             Q &amp; A
             </a>
             </h2>
@@ -67,7 +75,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     </thead>';
         
     while ($row = mysqli_fetch_array($result)) {
-
+		
         $escaped_title = htmlspecialchars($row['title']);
 
         // list 방식
@@ -82,7 +90,7 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
                 <td> 
-                    <form action=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
+                    <form action=\"".__rootpath."/view/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
                         <input type=\"hidden\" name=\"control_flag\" value=\"read\">
                         <button type=\"submit\"class=\"board_content\" >{$escaped_title}</button>  
                     </form> 

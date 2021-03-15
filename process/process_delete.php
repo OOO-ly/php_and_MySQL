@@ -1,14 +1,15 @@
 <?php
-include '../data/mysql_conn.php';
-settype($_POST['id'],'integer');
+include '../model/mysql_conn.php';
+settype($_POST['delete_id'],'integer');
 $filtered = array(
-    'id' => mysqli_real_escape_string($conn, $_POST['id']),
+    'id' => mysqli_real_escape_string($conn, $_POST['delete_id']),
+    'board' => mysqli_real_escape_string($conn, $_POST['delete_board'])
   );
 
 
 
 $sql = "
-    delete from topic
+    delete from {$filtered['board']}
     where
         id = '{$filtered['id']}'
     ";
@@ -20,7 +21,8 @@ if ($result == false){
    
 } else {
     echo '삭제했습니다. <a href="index.php">돌아가기</a>';
-    header("Location: index.php");
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    header('location:'.$prevPage);
 }
 
 ?>

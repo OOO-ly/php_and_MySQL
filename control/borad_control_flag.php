@@ -40,7 +40,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 ?>
                 <p>
                 <h2 class="board_title create_board">
-                <a href="../VIEW/board.php?board_name=<?= $board_name ?>">
+                <a href="<?= __rootpath ?>/view/board.php?board_name=<?= $board_name ?>">
                 <?= $board_title ?>
                 </a>
                 </h2>
@@ -59,7 +59,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 </p> -->
                 <!--                             -->
                 <!-- 기능 구현 -->
-                <form  action="../create_acticle.php" method="POST">
+                <form  action="../control/create_acticle.php" method="POST">
                     <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
                     <input type="text" class="article_title"
                     name="edit_title"
@@ -69,16 +69,39 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                             <?= $_SESSION['user_id'] ?>
                     </P>
                     <hr>
-                    <textarea class="article_content" id="editable_text"></textarea>
+                    <!-- <textarea class="article_content" id="editable_text"></textarea> -->
+                    <textarea class="article_content" id="editable_text" name="edit_description"></textarea>
+                    
                     <button class="submit_bt" id="create_sub" type="submit">글 작성</button>
                 </form>
                 <?php
                     break;
             case 'modify':
+                $sql = 'SELECT title, description from {$_GET["board_name"]} where ';
+                $result = mysqli_query($conn,$sql);
+                $row = mysqli_fetch_array($result);            
+                    ?>    
+                    <form  action="../control/create_acticle.php" method="POST">
+                    <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
+                    <input type="text" class="article_title"
+                    name="edit_title"
+                    id="editable_title" value="<?= $row['title'] ?>" autocomplete="off">
+                    <P class="article_info">
+                    by  
+                            <?= $_SESSION['user_id'] ?>
+                    </P>
+                    <hr>
+                    <!-- <textarea class="article_content" id="editable_text"></textarea> -->
+                    <textarea class="article_content" id="editable_text" name="edit_description"><?= $row['description'] ?></textarea>
+                    
+                    <button class="submit_bt" id="create_sub" type="submit">글 작성</button>
+                    </form>
+                    <?php
                     $_POST['control_flag'] = NULL;
                     break;
             case 'delete':
-                    $_POST['control_flag'] = NULL;  
+                    $_POST['control_flag'] = NULL;
+                      
                     break;
             default:
                     $_POST['control_flag'] = NULL;

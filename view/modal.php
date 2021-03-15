@@ -1,11 +1,10 @@
 <div class="modal hidden">
-    <div class="modal_overlay">
-    </div>
+    <div class="modal_overlay"></div>
     <div class="modal__content">
             <div class="modal_form">
                 <div class="sign_in_form">
                 <h3>로그인</h3>
-                    <form class="sign_in_form" action="../control/Sign_in.php" method="POST">
+                    <form class="sign_in_form" action="<?= __rootpath ?>/control/Sign_in.php" method="POST">
                             <p>
                             <label for="sign_in_id_input">아이디</label>
                             <input type="text" id="sign_in_id_input" name="user_id" pattern="^([a-z0-9_]){3,20}$" autocomplete="off" required>
@@ -19,7 +18,7 @@
                 </div>
                 <div class="sign_up_form">
                 <h3>회원가입</h3>
-                    <form class="sign_up_form " action="../control/sign_up.php" method="POST">
+                    <form class="sign_up_form " action="<?= __rootpath ?>/control/sign_up.php" method="POST">
                             <p>
                             <label  for="sign_up_id_input">회원가입 아이디</label>
                             <input type="text" id="sign_up_id_input" name="user_id" pattern="^([a-z0-9_]){3,20}$" autocomplete="off" required> 
@@ -38,6 +37,3 @@
             </div>
         </div>
     </div>
-
-  
-   

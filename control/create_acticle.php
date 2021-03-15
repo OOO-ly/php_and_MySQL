@@ -1,14 +1,26 @@
 <?php
 include "../model/mysql_conn.php";
 session_start();
-header("Cache-Control: no-cache");
-
+// header("Cache-Control: no-cache");
 
 // die(var_dump(
 // $_POST['edit_title'],
 // $_POST['']
 
 // ));
+
+$sql = "select id 
+        from author
+        where 
+        \"{$_SESSION['user_id']}\"
+        = name
+        ";
+
+$id = mysqli_query($conn, $sql);
+$id_allow = mysqli_fetch_array($id);
+
+// die(var_dump($id_allow[0]));
+
 $filtered = array(
 
     'title' => mysqli_real_escape_string($conn, $_POST['edit_title']),
@@ -22,25 +34,23 @@ $filtered = array(
 
 
 
+
+
+
 $sql = "
     INSERT INTO {$filtered['board_name']}
     (title, description, author_id, created)
     VALUES( 
         '{$filtered['title']}',
         '{$filtered['description']}',
-        '{$filtered['user_id']}',
+        '{$id_allow[0]}',
         NOW()
         )
 ";
 
-$sql = "
-    INSERT INTO {$filtered['board_name']}";
 
+$result = mysqli_query($conn, $sql);
 
-// $result =
-die(var_dump(
-     mysqli_query($conn, $sql)
-        ));
 
 if ($result == false) {
     echo '저장하는 과정에서 문제가 생겼습니다. 관리자에게 문의해주세요';
@@ -51,12 +61,22 @@ if ($result == false) {
 else {
     // $test = mysqli_query($conn, "SELECT * from topic order by id  desc limit 1");
     // $row = mysqli_fetch_array($test);
-    $sql =
-    "SELECT MAX(id) FROM {$filtered['board_name']} where name='{$filtered['user_id']}'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+    // $sql =
+    // "SELECT MAX(id) FROM {$filtered['board_name']} where name='{$filtered['user_id']}'";
+    // $result = mysqli_query($conn, $sql);
+    // $row = mysqli_fetch_array($result);
+    // $test = mysqli_query($conn, "SELECT * from topic order by id  desc limit 1");
+    // $row = mysqli_fetch_array($test);
+    // echo '성공했습니다. <a href="../index.php?id='
+    //     . $row['id'] .
+    //     '">
+    // 돌아가기</a>';
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    header('location:'.$prevPage);
+    die();
     ?>
-    <script>
+
+    <!-- <script>
         var form = document.createElement("form");
 
         form.setAttribute("charset", "UTF-8");
@@ -72,7 +92,7 @@ else {
         document.body.appendChild(form);
 
         form.submit();
-    </script>
+    </script> -->
 <?php
 
 

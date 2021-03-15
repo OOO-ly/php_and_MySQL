@@ -1,5 +1,3 @@
-
-
 let sign_in_bt = document.getElementById("sign_in_bt");
 let sign_in_form = document.querySelector(".sign_in_form");
 
@@ -17,7 +15,7 @@ let overlay = document.querySelector(".modal_overlay");
 let openModal = () => {
     modal.classList.remove("hidden");
 }
-let closeModal = () =>{
+let closeModal = () => {
     modal.classList.add("hidden");
 }
 

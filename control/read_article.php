@@ -31,7 +31,7 @@ function read_article($conn, $board_name,$article_id)
     echo '
     <p>
     <h2 class="board_title create_board">
-    <a href="../VIEW/board.php?board_name='.$board_name.'">
+    <a href="'.__rootpath.'/view/board.php?board_name='.$board_name.'">
    '.$board_title.'
     </a>
     </h2>

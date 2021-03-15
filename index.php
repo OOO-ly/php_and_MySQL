@@ -1,17 +1,20 @@
 <?php
-// set_include_path(" C:\Users\tnj200##\Documents\php_and_MySQL;");
 session_start();
-include "./model/mysql_conn.php";
-include "./control/new_article_preview.php"; 
-include "./control/title_con.php";
 
+// //goorm test_final path
+define ("__rootpath","",false);
+include "model/mysql_conn.php";
+include "control/new_article_preview.php"; 
+include "control/title_con.php";
 
-
-
-
+//local path
+// include "./model/mysql_conn.php";
+// include "./control/new_article_preview.php"; 
+// include "./control/title_con.php";
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,22 +24,28 @@ include "./control/title_con.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title><?= $title ?></title>
+    <!-- <link rel="stylesheet" href="style/nav.css"> -->
     <link rel="stylesheet" href="../style/nav.css">
-
-
+    
 </head>
 
 <body>
 
 
 
-    <?php include_once './view/nav.php'; ?>
-
+    <?php 
+    // include_once './view/nav.php'; 
+    include_once 'view/nav.php'; 
+     ?>
     <div class="content-container">
-
+	
         <article>
-            <?php new_article_create($conn,"topic",5); ?>
-            <?php new_article_create($conn,"topic2",5); ?>
+            <?php 
+            new_article_create($conn,"topic",5); 
+            ?>
+            <?php 
+            new_article_create($conn,"topic2",5); 
+            ?>
         </article>
 
     </div>
@@ -46,5 +55,4 @@ include "./control/title_con.php";
     </footer>
     
 </body>
-
 </html>
