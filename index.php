@@ -6,6 +6,14 @@ define ("__rootpath","",false);
 include "model/mysql_conn.php";
 include "control/new_article_preview.php"; 
 include "control/title_con.php";
+// 기존 권한의 경우 guset로 접근할 수 있는 것을 제한하고
+// admin은 하나의 계정으로 접근할 수 있도록 하고
+// member 라는 계정을 만들어 접근을 제한해야함
+// 스마트에디터 api를 활용할 수있는지 확인해야함
+// 현재 위치를 가져오는 기능 구현
+// 현재 위치를 기준으로 원하는 위치의 거리 재는 기능 추가 
+// 현재 구현중인 브랜치에서 main과 머지하는 작업이 필요
+// 경로문제가 많이 생길 예정
 
 //local path
 // include "./model/mysql_conn.php";

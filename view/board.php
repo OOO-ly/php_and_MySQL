@@ -85,6 +85,7 @@ if(!isset($_POST['control_flag'])){
                     <input type="hidden" name="delete_board" value="<?= $_GET['board_name']?>"/>
                     <input type="hidden" name="control_flag" value="delete"/>
                     <input class="submit_bt" type="submit" value="글 삭제"/>
+                <!-- 삭제하고 리스트로 돌아오면 버튼이 다 살아남  -->
                 </form>
             <?php }
             } ?>
