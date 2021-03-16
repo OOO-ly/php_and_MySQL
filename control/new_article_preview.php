@@ -122,7 +122,10 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     
       echo  $list. 
     '</table>';
-    
+
+
+    //dropdown 의 경우 js 를 활용한 onfocus를 활용하고 keypress로 dropdown을 실행해야함
+    //동적 인터랙티브는 결국 이를 통해 실행해야함 피할 수 없음.
     if($fieldcount == 0 ){
         echo '<p>작성하신 내용이 없습니다.</p>'; // 이에 따라 글 id는 post로 넘겨야함
         }
