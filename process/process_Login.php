@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../data/mysql_conn.php';
-
+/*
 $_SESSION['user_id'] = $_POST['user_id'];
 $_SESSION['user_pw'] = $_POST['user_pw'];
 
@@ -9,7 +9,13 @@ $filtered = array(
 
     'user_id' => htmlspecialchars($_SESSION['user_id']),
     'user_pw' => htmlspecialchars($_SESSION['user_pw'])
+
+
 );
+*/
+// 파라미터 전송값 받는부분
+$user_id = $_POST;
+$user_pw = $_POST;
 
 
 

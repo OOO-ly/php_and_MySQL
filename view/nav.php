@@ -27,18 +27,18 @@
         </li>
         <li class="nav_item"><a href="<?= __rootpath ?>/view/contactus.php" class="contact_">고객지원</a></li>
         <div class="login_box">
-            <?php if (!isset($_SESSION['user_id'])) { ?>
-            
+            <?php if (!isset($_SESSION['user_id'])) { ?>   
                 <li class="nav_item">
-                <a class="sign_in" id="sign_in_bt">로그인</a>
+                <button class="member_bt" id="sign_in_bt">로그인</button>
+                <!-- modal 실행 시 초점 이동 방법 필요 -->
+                <!-- 모달 종료 시 기존 초점으로 이동 방법 필요 -->
                 </li>
-            
-            <li class="nav_item"><a  class="sign_up" id="sign_up_bt">회원가입</a></li>
+            <li class="nav_item"><button class="member_bt" id="sign_up_bt">회원가입</button></li>
             
             <?php } else { ?>
 
-            <li class="nav_item sign_"><a  class="sign_"> <?= $_SESSION['user_id'] ?></a></li>
-            <li class="nav_item"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_">로그아웃</a></li>
+            <li class="nav_item member_bt"><a href="" class="sign_"> <?= $_SESSION['user_id'] ?></a></li>
+            <li class="nav_item member_bt"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_ ">로그아웃</a></li>
             <?php } ?>
         </div>
     </ul>
@@ -66,7 +66,6 @@ if(isset($_SESSION['flag'])){
         $_SESSION['flag'] ='';
     }
 }
-
 
 
 ?>

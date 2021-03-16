@@ -74,25 +74,11 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                     
                     <button class="submit_bt" id="create_sub" type="submit">글 작성</button>
                 </form>
+                <hr>
                 <?php
                     break;
             case 'modify':
-                // $sql = 
-                // 'SELECT 
-                // {$_GET["board_name"]}.title, 
-                // {$_GET["board_name"]}.description, 
-                // {$_GET["board_name"]}.author_id
-                // from {$_GET["board_name"]} 
-                // LEFT JOIN author 
-                // ON  {$_GET["board_name"]}.author_id = author.id
-                // WHERE $_SESSION["user_id"] = author.name
-                // ';
-                // echo $_GET["board_name"];
-
-          
-                // $ss = "$_GET["board_name"]';
-
-                // echo $ss;
+           
 
                 $sql = "
                 SELECT
@@ -104,7 +90,7 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 ON {$_GET['board_name']}.author_id = author.id 
                 WHERE 
                     {$_GET['board_name']}.author_id = 
-                    (select id from author where name =\"{$_SESSION["user_id"]}\")
+                    (select id from author where name =\"{$_SESSION['user_id']}\") AND {$_GET['board_name']}.id = {$_POST['modify_id']}
                 ";
                 
 

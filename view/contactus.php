@@ -34,66 +34,70 @@ define ("__rootpath","",false);
 
     <div class="content-container">
 
-		<div class="map-container"></div>
-	
-			<div id="map" class="map1" >
-				<script>
-					
-				//어떤 노드에 추가할지 id 가져옴
-				var container = document.getElementById('map');
 
-
-				// 기본 맵 정보 가져오기
-				var options = {
-					center: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338),
-					level: 2,
-					keyboardShortcuts: true,
-
-				};
-
-				//맵 동적 생성
-				var map = new kakao.maps.Map(container, options);
-		
-				
-
-				//마커 설정
-				var marker = new kakao.maps.Marker({
-				map: map,
-				position: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338)
-				});
-
-				//인포윈도우 출력
-				var infowindow = new kakao.maps.InfoWindow({
-					content: '<div style="width:150px;text-align:center;padding:6px 0;">제주더큰내일센터:)</div>'
-				});
-				infowindow.open(map, marker);
-				
+		<article>
+				<div class="map-container"></div>
 			
+					<div id="map" class="map1" >
+						<script>
+							
+						//어떤 노드에 추가할지 id 가져옴
+						var container = document.getElementById('map');
 
-				// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-				// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-				var mapTypeControl = new kakao.maps.MapTypeControl();
-				map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
 
-				// 줌 컨트롤 오른쪽 상단에 추가
-				var zoomControl = new kakao.maps.ZoomControl();
-				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-				</script>
-			</div>
-		</div>
+						// 기본 맵 정보 가져오기
+						var options = {
+							center: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338),
+							level: 2,
+							keyboardShortcuts: true,
 
-		<!-- 좌표 출력부  -->
-		<p id="pointt"></p>
+						};
 
-        <hr>
-       <!-- 버튼  -->
-		<form action="/" method="post">
-		<div class="map-control">
-		<input type="button" value="에이엔디플랫폼" onclick="set_andplatform();">
-		<input type="button" value="더큰내일센터" onclick="set_thekunnaeil();">
-		<input type="button" value="좌표 출력" onclick="getposition();">
+						//맵 동적 생성
+						var map = new kakao.maps.Map(container, options);
 
-		</form>
+						
+
+						//마커 설정
+						var marker = new kakao.maps.Marker({
+						map: map,
+						position: new kakao.maps.LatLng(33.48155552342617, 126.50896084853338)
+						});
+
+						//인포윈도우 출력
+						var infowindow = new kakao.maps.InfoWindow({
+							content: '<div style="width:150px;text-align:center;padding:6px 0;">제주더큰내일센터</div>'
+						});
+						infowindow.open(map, marker);
+						
+					
+
+						// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+						// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+						var mapTypeControl = new kakao.maps.MapTypeControl();
+						map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+
+						// 줌 컨트롤 오른쪽 상단에 추가
+						var zoomControl = new kakao.maps.ZoomControl();
+						map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+						</script>
+					</div>
+				</div>
+
+				<!-- 좌표 출력부  -->
+				<p id="pointt"></p>
+
+				<hr>
+				<!-- 버튼  -->
+				<form action="/" method="post">
+				<div class="map-control">
+				<input type="button" value="에이엔디플랫폼" onclick="set_andplatform();">
+				<input type="button" value="더큰내일센터" onclick="set_thekunnaeil();">
+				<input type="button" value="좌표 출력" onclick="getposition();">
+
+				</form>
+		</article>
+		
 
     </div>
 

@@ -22,32 +22,36 @@ define ("__rootpath","",false);
 	include_once '../view/nav.php'; ?>
     <div class="content-container">
 
-
-    <h1></h1>
-    <img src="../media/profile.png" alt="intern_profile_img">
+ 
     <!-- text-align centen 
     position righr -->
-    <p>안녕하세요
-    <?php if(isset($_SESSION['user_id'])){
+        <div class="produce_content">
+            
+        
+            <div class="produce_text">
+                    <p>안녕하세요
+                        <?php if(isset($_SESSION['user_id'])){ echo $_SESSION['user_id'].' 님';}else{ echo '방문객 님'; }?> 
+                    </p>
+                    <p>php 로 web tutorial 진행중인 O3 입니다.</p>     
+            </div>      
+                <img src="../media/profile.png" alt="intern_profile_img">   
+        </div>
+  
+        <div class="produce_content">
 
-        echo $_SESSION['user_id'].' 님';
 
-    }
-    else{
-        echo '방문객 님';
-    }
-    ?> 
-    </p>
-    <p>php MySQL로 web tutorial 진행중인 O3 입니다.</p>
-    <p>현재 보고 계신 페이지는 되도록 하드코딩으로 제작된 페이지로
-        다소 가독성이 떨어짐을 양해 말씀드립니다.</p>
-
+        <div class="produce_text">
+                <p>이 프로젝트는</p>
+                <p> 에이앤디플랫폼 , 뛰놀자, 제주더큰내일센터에서 도와주고 계십니다</p>
+            </div>
+            <div class="produce_img_group">
+                <img src="../media\ANDplatform_logo.png" alt="sponcer_img" class="produce_img" >
+                <img src="../media\ttinolja_logo.png" class="produce_img" >
+                <img src="../media\logo.png" class="produce_img" >
+            </div>
     
-    <img src="../media/profile.png" alt="sponcer_img">
-    <!-- 뛰놀자 CI + 제주 더큰 내일 센터 CI -->
-    <p>이 프로젝트는 에이앤디플랫폼 , 뛰놀자, 제주더큰내일센터에서 도와주고 계십니다</p>
-
-
+            
+        </div>
     </div>
    
     <footer>

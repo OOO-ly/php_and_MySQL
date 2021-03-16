@@ -10,7 +10,8 @@
 
 
 //local paht
-$conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
+
+$conn = mysqli_connect("localhost", "member", "567567567", "tnj_tutorial");
 
 // $conn = mysqli_connect("{$ip}:53216", "root", "12341234", "tnj_tutorial");
 

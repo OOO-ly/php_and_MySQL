@@ -1,7 +1,15 @@
 <?php
 
+
+
+
 function new_article_create($conn, $board_name, $limit = 5, $rand = false )
 {
+    if(isset($_SESSION['user_id']))
+        {   
+            $login_user = $_SESSION['user_id'];
+        }
+    else{$login_user = "*";}
     $sql = "SELECT 
     {$board_name}.id, {$board_name}.title, 
     {$board_name}.description, 
@@ -11,21 +19,28 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     author.profile 
     FROM {$board_name}        
     LEFT JOIN author
-    ON {$board_name}.author_id = author.id
-    ORDER BY ";
-   
+    ON {$board_name}.author_id = author.id";
+    if( $board_name == 'topic2'){
+
+        $sql .= " WHERE author.name = '{$login_user}'";
+        
+    }
     if($rand == false)
     {
-        $sql .="created DESC LIMIT {$limit}";
+        $sql .=" ORDER BY created DESC LIMIT {$limit}";
     }
     else
     {
-        $sql .= "rand() LIMIT {$limit}";
+        $sql .= " ORDER BY rand() LIMIT {$limit}";
     }
+  
     
     
 
+    
+
     $result = mysqli_query($conn, $sql);
+    $fieldcount = mysqli_num_rows($result);
     $list = '';
 	if($result == false){
 	?>
@@ -73,14 +88,18 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
             <th>작성일
         </tr>
     </thead>';
-        
+   
+ 
+    
     while ($row = mysqli_fetch_array($result)) {
 		
         $escaped_title = htmlspecialchars($row['title']);
 
+     
+      
         // list 방식
         //$list .=  "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
-
+       
 
         //a 태그 
         //<a href=\"../VIEW/board.php?board_name={$board_name}&id={$row['id']}\">{$escaped_title}</a>
@@ -103,4 +122,8 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     
       echo  $list. 
     '</table>';
+    
+    if($fieldcount == 0 ){
+        echo '<p>작성하신 내용이 없습니다.</p>';
+        }
 }

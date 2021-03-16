@@ -6,13 +6,17 @@ include '../model/mysql_conn.php';
 
         'user_id' => htmlspecialchars($_POST['user_id']),
         'user_pw' => htmlspecialchars($_POST['user_pw'])
+     
     );
+
+
 
     $sql = 'select name,password from author';
     $result = mysqli_query($conn,$sql);
 
 while($row = mysqli_fetch_array($result))
     {
+        
         if($row['name'] == $filtered['user_id'] && $row['password'] == $filtered['user_pw'])
         {
             unset($_SESSION['user_pw'],$filtered['user_pw']);

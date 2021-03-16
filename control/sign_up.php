@@ -3,10 +3,12 @@
 include '../model/mysql_conn.php';
 
 
+                $hashed_password = password_hash($_POST['user_pw'],PASSWORD_DEFAULT);
+
                 $filtered = array(
 
                     'name' => mysqli_real_escape_string($conn, $_POST['user_id']),
-                    'password' => mysqli_real_escape_string($conn, $_POST['user_pw']),
+                    'password' => mysqli_real_escape_string($conn, $hashed_password),
                     'profile' => mysqli_real_escape_string($conn, $_POST['user_profile']),
                 );
 

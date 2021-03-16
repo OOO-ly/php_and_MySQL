@@ -7,6 +7,8 @@ session_start();
 // $_POST['edit_title'],
 // $_POST['']
 
+var_dump($_SESSION['user_id']);
+
 // ));
 
 $sql = "select id 

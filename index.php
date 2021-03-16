@@ -15,7 +15,6 @@ include "control/title_con.php";
 // 현재 구현중인 브랜치에서 main과 머지하는 작업이 필요
 
 
-
 ?>
 
 <!DOCTYPE html>

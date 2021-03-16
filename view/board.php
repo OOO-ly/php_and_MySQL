@@ -73,6 +73,7 @@ if(!isset($_POST['control_flag'])){
                     //  modify button  & delete button -
                     if($_SESSION['user_id'] == $_SESSION['article_author']){ ?>
                         <form action="<?= __rootpath ?>/view/board.php?board_name=<?= $_GET['board_name'] ?>" method="post">
+                            <input type="hidden" name="modify_id" value="<?= $_GET['id'] ?>"/>
                             <input type="hidden" name="control_flag" value="modify"/>
                             <input class="submit_bt" type="submit" value="글 수정"/>
                         </form>
