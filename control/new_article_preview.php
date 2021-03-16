@@ -124,6 +124,6 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     '</table>';
     
     if($fieldcount == 0 ){
-        echo '<p>작성하신 내용이 없습니다.</p>';
+        echo '<p>작성하신 내용이 없습니다.</p>'; // 이에 따라 글 id는 post로 넘겨야함
         }
 }
