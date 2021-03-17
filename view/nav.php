@@ -1,51 +1,51 @@
-
 <nav>
     <ul class="nav-container">
         <a class="nav-logo" href="<?= __rootpath ?>/index.php">
             <img src="<?= __rootpath ?>/media/profile.png" alt="nav_logo">
         </a>
-        <li class="nav_item"><a href="<?= __rootpath ?>/view/produce.php" class="produce_">회사소개</a></li>
-        <li class="nav_item dropdown"><a href="<?= __rootpath ?>/view/board.php?board_name=topic">커뮤니티</a>
+        <li class="nav_item"><a href="<?= __rootpath ?>/view/produce.php" class="produce_ nav_a">회사소개</a></li>
+        <li class="nav_item dropdown" id="dropdown_head"><a
+                href="<?= __rootpath ?>/view/board.php?board_name=topic" class="nav_a">커뮤니티</a>
             <div class="dropdown-content">
                 <ul>
                     <li>
                         <!-- <a href="<?= __rootpath ?>view/board.php?board_name=topic">공지사항</a> -->
                         <form action="<?= __rootpath ?>/view/board.php?board_name=topic" method="post">
-							<button type="submit"class="dropdown_bt" >공지사항</button>
+                            <button type="submit" class="dropdown_bt nav_a">공지사항</button>
                             <input type="hidden" name="control_flag" value="list">
-                        </form>       
+                        </form>
                     </li>
                     <li>
                         <!-- <a href="<?= __rootpath ?>view/board.php?board_name=topic2">Q &amp; A</a> -->
-                         <form action="<?= __rootpath ?>/view/board.php?board_name=topic2" method="post">
+                        <form action="<?= __rootpath ?>/view/board.php?board_name=topic2" method="post">
                             <input type="hidden" name="control_flag" value="list">
-                            <button type="submit"class="dropdown_bt" >Q &amp; A</button>  
-                        </form> 
+                            <button type="submit" class="dropdown_bt nav_a">Q &amp; A</button>
+                        </form>
                     </li>
                 </ul>
             </div>
         </li>
-        <li class="nav_item"><a href="<?= __rootpath ?>/view/contactus.php" class="contact_">고객지원</a></li>
+        <li class="nav_item"><a href="<?= __rootpath ?>/view/contactus.php" class="contact_ nav_a">고객지원</a></li>
         <div class="login_box">
-            <?php if (!isset($_SESSION['user_id'])) { ?>   
-                <li class="nav_item">
-                <button class="member_bt" id="sign_in_bt">로그인</button>
+            <?php if (!isset($_SESSION['user_id'])) { ?>
+            <li class="nav_item">
+                <button class="member_bt" id="sign_in_bt" class="nav_a">로그인</button>
                 <!-- modal 실행 시 초점 이동 방법 필요 -->
                 <!-- 모달 종료 시 기존 초점으로 이동 방법 필요 -->
-                </li>
-            <li class="nav_item"><button class="member_bt" id="sign_up_bt">회원가입</button></li>
-            
+            </li>
+            <li class="nav_item"><button class="member_bt nav_a" id="sign_up_bt">회원가입</button></li>
+
             <?php } else { ?>
 
-            <li class="nav_item member_bt"><a href="" class="sign_"> <?= $_SESSION['user_id'] ?></a></li>
-            <li class="nav_item member_bt"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_ ">로그아웃</a></li>
+            <li class="nav_item member_bt"><a href="" class="sign_ nav_a"> <?= $_SESSION['user_id'] ?></a></li>
+            <li class="nav_item member_bt"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_ nav_a">로그아웃</a></li>
             <?php } ?>
         </div>
     </ul>
 </nav>
 
-    <script defer src="<?=__rootpath?>/js/modal.js"></script>
-    
+<script defer src="<?=__rootpath?>/js/modal.js"></script>
+
 <!-- 회원가입 /로그인 관련 -->
 <?php 
 

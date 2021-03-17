@@ -5,6 +5,8 @@ let sign_in_form = document.querySelector(".sign_in_form");
 let sign_up_bt = document.getElementById("sign_up_bt");
 let sign_up_form = document.querySelector('.sign_up_form');
 
+// nav_item hover 에 맞춰 css를 추가하려 했으나 
+// 실패 
 
 
 // 모달 기본 셋

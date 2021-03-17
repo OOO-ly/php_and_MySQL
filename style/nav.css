@@ -301,7 +301,8 @@ text-decoration: none;
 color:inherit;
 }
 
-.nav_item:hover{
+.nav_item:hover,
+.nav_item a:focus {
 background-color: rgb(42, 232, 253);
 color: white;
 }
@@ -359,7 +360,8 @@ position: relative;
 display: inline-block;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content,
+#dropdown_head:focus-within .dropdown-content{
 display: block;
 }
 
@@ -429,7 +431,6 @@ color: white;
     font-size: 15px;
     font-weight: bold;
     background-color: rgba(0,0,0,0);
-    outline: 0;
     border:0 none;
     width: 100%;
     height: inherit;
@@ -442,7 +443,6 @@ color: white;
 }
 .dropdown-content .dropdown_bt:focus{
     border:0 none;
-    outline: 0;
 }
 
 
