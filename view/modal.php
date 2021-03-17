@@ -34,6 +34,30 @@
                             <button id="sign_up_bt"> 회원 가입 </button>
                     </form>
                 </div>
+
+                <?php
+                if(isset($_SESSION['user_id'])){
+                $sql = "SELECT password From author where name = '{$_SESSION['user_id']}'";
+                $result = mysqli_query($conn, $sql);
+                $author_ = mysqli_fetch_array($result); ?>
+                <div class="member_info_confirm_form">
+                <h3>비밀번호 확인</h3>
+                    <form class="password_confirm" action="../control/password_confirm.php"method="POST">
+                            <p>
+                                <h4><?= $_SESSION['user_id']?> 님의 비밀번호를 입력해주세요</h4>
+                            </p>
+                            <p>
+                                <label for="member_info_pw">회원 비밀번호</label>
+                                <input type="password" id="member_info_pw" name="user_pw" required>
+                            </p>
+                            <button id="member_info_confirm_bt" onclick="password_confirm();"> 회원 정보 수정 완료 </button>
+                    </form>
+                </div>
+    
+                
+                <?php } ?>
             </div>
         </div>
     </div>
+
+ 

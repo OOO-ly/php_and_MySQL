@@ -84,14 +84,26 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 SELECT
                 {$_GET['board_name']}.title,
                 {$_GET['board_name']}.description,
-                {$_GET['board_name']}.id
+                {$_GET['board_name']}.id,
+                author.name
                 FROM {$_GET['board_name']}
                 LEFT JOIN author 
                 ON {$_GET['board_name']}.author_id = author.id 
                 WHERE 
-                    {$_GET['board_name']}.author_id = 
-                    (select id from author where name =\"{$_SESSION['user_id']}\") AND {$_GET['board_name']}.id = {$_POST['modify_id']}
-                ";
+                    {$_GET['board_name']}.id = {$_POST['modify_id']} 
+                    ";
+                
+                if($_SESSION['member_lv'] !=2 ){
+                    $sql .= 
+                
+                    "
+                        AND
+                        {$_GET['board_name']}.author_id = 
+                        (select id from author where name =\"{$_SESSION['user_id']}\") 
+                        
+                    ";
+                }
+               
                 
 
                 // $sql = '
@@ -111,13 +123,13 @@ function board_control( $conn, string $board_name, $_post_control_flag, $article
                 
                     
                     ?>    
-                    <form  action="<?= __rootpath ?>/process/process_modify.php" method="POST">
+                    <form  action="<?= __rootpath ?>/control/process_modify.php" method="POST">
                     <input type="hidden" name="board_name" value="<?= $_GET['board_name']?>"/>
                     <input type="hidden" name="board_id" value="<?= $row['id'] ?>"/>
                     <input type="text" class="article_title" name="edit_title" id="editable_title" value="<?= $row['title'] ?>" autocomplete="off">
                     <P class="article_info">
                     by  
-                            <?= $_SESSION["user_id"] ?>
+                            <?= $row["name"] ?>
                     </P>
                     <hr>
                     <!-- <textarea class="article_content" id="editable_text"></textarea> -->

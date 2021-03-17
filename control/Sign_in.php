@@ -2,6 +2,7 @@
 session_start();
 include '../model/mysql_conn.php';
 
+
     $filtered = array(
 
         'user_id' => htmlspecialchars($_POST['user_id']),
@@ -11,16 +12,18 @@ include '../model/mysql_conn.php';
 
 
 
-    $sql = 'select name,password from author';
+    $sql = 'select name,password,member_lv from author';
     $result = mysqli_query($conn,$sql);
 
 while($row = mysqli_fetch_array($result))
     {
         
-        if($row['name'] == $filtered['user_id'] && $row['password'] == $filtered['user_pw'])
+        // if($row['name'] == $filtered['user_id'] && password_verify($filtered['user_pw'],$row['password']))
+        if($row['name'] == $filtered['user_id'] && $filtered['user_pw'] == $row['password']  or password_verify($filtered['user_pw'],$row['password']) )
         {
             unset($_SESSION['user_pw'],$filtered['user_pw']);
             $_SESSION['user_id'] = $_POST['user_id'];
+            $_SESSION['member_lv'] = $row['member_lv'];
             $prevPage = $_SERVER['HTTP_REFERER'];
             // header('location:'.$prevPage);
             header('location: ../index.php' );

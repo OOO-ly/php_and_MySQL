@@ -11,26 +11,13 @@
 
 //local paht
 
-$conn = mysqli_connect("localhost", "member", "567567567", "tnj_tutorial");
+$conn = mysqli_connect("localhost", "root", "12341234", "tnj_tutorial");
 
 // $conn = mysqli_connect("{$ip}:53216", "root", "12341234", "tnj_tutorial");
 
 // $conn = mysqli_connect("54.180.26.214:58604", "root", "12341234", "tnj_tutorial");
 
 // $conn =mysqli_connect("localhost", "tnj_guest", "@@##WWEE", "tnj_tutorial");
-	
-if(	mysqli_connect_error() )
-{
-?>
-			<!-- <script> alert("접속 aht했어요");</script> -->
-<?php
-}
-else
-{
-	?>
-			<!-- <script> alert("접속 tjdrhd했어요");</script> -->
-<?php
-}
 
     if(isset($_SESSION['user_id'])){
         $sql = "select id

@@ -64,14 +64,14 @@
 
 
     // 게시글을 열었다면 id 를 받아 
-    if (isset($_GET['id']) 
+    if (isset($_POST['article_id']) 
         
-        //&& $_GET['id'] <= mysqli_fetch_array(mysqli_query($conn, $topic_count_sql))['count(*)']
+        //&& $_POST['article_id'] <= mysqli_fetch_array(mysqli_query($conn, $topic_count_sql))['count(*)']
         ) 
         {
         
     
-        $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
+        $filtered_id = mysqli_real_escape_string($conn, $_POST['article_id']);
     
         $sql = "select 
                     topic.id, topic.title, 
@@ -110,7 +110,7 @@
 
             $delete_link = //'<a href="process_delete.php?id='.$filtered_id.'">delete</a>';
                 '<form action="process_delete.php" method="POST" >
-                <input type="hidden" name="id" value="' . $_GET['id'] . '">
+                <input type="hidden" name="id" value="' . $_POST['article_id'] . '">
                 <input type="submit" value="delete">
                 </form>';
             }

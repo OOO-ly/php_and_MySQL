@@ -5,11 +5,17 @@
 
 function new_article_create($conn, $board_name, $limit = 5, $rand = false )
 {
+    $member_lv = 1;
     if(isset($_SESSION['user_id']))
         {   
             $login_user = $_SESSION['user_id'];
         }
     else{$login_user = "*";}
+    if(isset($_SESSION['member_lv']))
+    {
+            $member_lv  = $_SESSION['member_lv'];
+    }
+    
     $sql = "SELECT 
     {$board_name}.id, {$board_name}.title, 
     {$board_name}.description, 
@@ -20,10 +26,11 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     FROM {$board_name}        
     LEFT JOIN author
     ON {$board_name}.author_id = author.id";
-    if( $board_name == 'topic2'){
-
-        $sql .= " WHERE author.name = '{$login_user}'";
-        
+    
+    if($board_name == 'topic2'){
+        if($member_lv != 2 ){
+             $sql .= " WHERE author.name = '{$login_user}'";     
+        }
     }
     if($rand == false)
     {
@@ -109,8 +116,9 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
             <tr class=\"board_content\">
                 <td>{$row['id']}</td>
                 <td> 
-                    <form action=\"".__rootpath."/view/board.php?board_name={$board_name}&id={$row['id']}\" method=\"post\">
+                    <form action=\"".__rootpath."/view/board.php?board_name={$board_name}\" method=\"post\">
                         <input type=\"hidden\" name=\"control_flag\" value=\"read\">
+                        <input type=\"hidden\" name=\"article_id\" value=\"{$row['id']}\">
                         <button type=\"submit\"class=\"board_content\" >{$escaped_title}</button>  
                     </form> 
                 </td>
@@ -124,8 +132,6 @@ function new_article_create($conn, $board_name, $limit = 5, $rand = false )
     '</table>';
 
 
-    //dropdown 의 경우 js 를 활용한 onfocus를 활용하고 keypress로 dropdown을 실행해야함
-    //동적 인터랙티브는 결국 이를 통해 실행해야함 피할 수 없음.
     if($fieldcount == 0 ){
         echo '<p>작성하신 내용이 없습니다.</p>'; // 이에 따라 글 id는 post로 넘겨야함
         }

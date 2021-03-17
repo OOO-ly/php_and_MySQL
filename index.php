@@ -33,8 +33,6 @@ include "control/title_con.php";
 
 <body>
 
-
-
     <?php 
     include_once 'view/nav.php'; 
      ?>
@@ -46,7 +44,7 @@ include "control/title_con.php";
             ?>
             <?php 
             new_article_create($conn,"topic2",5); 
-            ?>
+           ?>
         </article>
 
     </div>

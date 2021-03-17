@@ -154,7 +154,7 @@ $form_author = '';
 $label_submit = 'Create_author';
 //id 가 있으면 create 없으면 수정
 //update가 db다시 접근하면서 느려짐...
-if (!isset($_GET['id'])) {
+if (!isset($_POST['article_id'])) {
     //저자 생성 폼
     $form_author = '
     <form action="process_create_author.php" method="post"';
@@ -169,7 +169,7 @@ if (!isset($_GET['id'])) {
     </form>';
 } else {
 
-    $filterd_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $filterd_id = mysqli_real_escape_string($conn, $_POST['article_id']);
     settype($filterd_id, 'integer');
     $label_submit = 'Update_submit';
     $sql = "SELECT * from author where id={$filterd_id}";

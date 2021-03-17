@@ -37,7 +37,9 @@
 
             <?php } else { ?>
 
-            <li class="nav_item member_bt"><a href="" class="sign_ nav_a"> <?= $_SESSION['user_id'] ?></a></li>
+            <li class="nav_item member_bt">
+                <button class="member_bt nav_a" id="member_info_bt"><?= $_SESSION['user_id'] ?></button>
+        </li>
             <li class="nav_item member_bt"><a href="<?= __rootpath ?>/control/sign_out.php" class="sign_ nav_a">로그아웃</a></li>
             <?php } ?>
         </div>
@@ -52,8 +54,16 @@
 include __DIR__."/modal.php";
 
 if(isset($_SESSION['flag'])){
+    if($_SESSION['flag'] == 'confirm'){
+        // header('location: ../view_/index_.php' ); 
+        $_SESSION['flag'] ='';
+    }
+    if($_SESSION['flag'] == 'wrong_password'){
+        echo "<script>alert('비밀번호를 확인 해주세요');</script>";
+        $_SESSION['flag'] ='';
+    }
     if($_SESSION['flag'] == 'failed_sign'){
-        echo "<script>alert('실패 실패! 로그인 실패!');</script>";
+        echo "<script>alert('로그인 실패!');</script>";
         $_SESSION['flag'] ='';
     }
     else if($_SESSION['flag'] == 'failed_sign_up_1062'){
@@ -68,4 +78,4 @@ if(isset($_SESSION['flag'])){
 }
 
 
-?>
+?> 

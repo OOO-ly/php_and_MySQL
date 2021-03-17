@@ -304,7 +304,7 @@ color:inherit;
 .nav_item:hover,
 .nav_item a:focus {
 background-color: rgb(42, 232, 253);
-color: white;
+color: white;   
 }
 
 
@@ -334,7 +334,7 @@ margin: 2px;
     font-weight: bold;
     font-size: 12px;
     color: white;
-    padding: 5px;
+    padding: 3px;
     cursor: pointer;
 }
 
@@ -442,6 +442,8 @@ color: white;
     color: white;
 }
 .dropdown-content .dropdown_bt:focus{
+    background-color: rgba(62, 48, 228);
+    color: white;   
     border:0 none;
 }
 

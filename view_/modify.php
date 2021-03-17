@@ -10,16 +10,16 @@ while ($row = mysqli_fetch_array($result)) {
     $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
 }
 
-if (isset($_GET['id'])) {
-    $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
-    $sql = "SELECT * FROM topic WHERE id={$_GET['id']}";
+if (isset($_POST['article_id'])) {
+    $filtered_id = mysqli_real_escape_string($conn, $_POST['article_id']);
+    $sql = "SELECT * FROM topic WHERE id={$_POST['article_id']}";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
     $article['title'] = htmlspecialchars($row['title']);
     $article['description'] = htmlspecialchars($row['description']);
     echo $sql;
 
-    $modify_link = '<a href="modify.php?id='.$_GET['id'].'">modify</a>';
+    $modify_link = '<a href="modify.php?id='.$_POST['article_id'].'">modify</a>';
 }
 
 ?>
@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
 
 
     <form action="process_modify.php" , method="POST">
-        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <input type="hidden" name="id" value="<?=$_POST['article_id']?>">
         <p><input type="text" name="title" placeholder="Title" value="<?= $article['title']?>" </p>
         <p><textarea name="description" placeholder="Description"><?= $article['description'] ?></textarea></p>
         <p><input type="submit"></p>
